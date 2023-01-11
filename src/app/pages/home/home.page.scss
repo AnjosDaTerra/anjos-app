@@ -1,6 +1,32 @@
 .container {
     background-color: black;
     height: 100%;
-    width: auto;
-    color: white;
+    width: 100%;
+    color: white; 
+    position: absolute;
+    display: inline-block;
 }
+
+
+.retangulo01 {
+    margin-top: 2px;
+    background-color:red;
+    height: 200px;
+    width: 400px; 
+}
+
+.retangulo02 {
+    margin-top: 3px;
+    background-color: yellow;
+    height: 100px;
+    width: 200px; 
+}
+
+.retangulo03 {
+    margin-top: 3px;
+    background-color: white;
+    height: 50px;
+    width: 100px;
+}
+
+
