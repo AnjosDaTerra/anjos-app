@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuemsomosPage implements OnInit {
 
+  image = "https://www.showmetech.com.br/wp-content/uploads//2021/11/black-friday-os-melhores-notebooks-e-computadores-para-aproveitar-a-data.png"
+
+
   constructor() { }
 
   ngOnInit() {
