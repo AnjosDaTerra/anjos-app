@@ -10,6 +10,5 @@ export class AppComponent {
     { title: 'Quem somos', url: '/quemsomos', icon: 'paper-plane' },
     { title: 'Lojas', url: '/folder/Favorites', icon: 'heart' }
   ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
   constructor() {}
 }
