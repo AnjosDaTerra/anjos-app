@@ -18,7 +18,11 @@ const routes: Routes = [
   {
     path: 'quemsomos/:id',
     loadChildren: () => import('./pages/quemsomos/quemsomos.module').then( m => m.QuemsomosPageModule)
+  },  {
+    path: 'botao',
+    loadChildren: () => import('./botao/botao.module').then( m => m.BotaoPageModule)
   },
+
 ];
 
 @NgModule({
