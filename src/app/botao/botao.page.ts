@@ -14,7 +14,6 @@ export class BotaoPage implements OnInit {
   }
 
   abrirPagina(pagina: string) {
-    alert(pagina)
     this.nav.navigateForward(pagina)
   }
 }
