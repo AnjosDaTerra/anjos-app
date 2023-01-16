@@ -33,12 +33,9 @@
             ],
             "styles": [
               "src/theme/variables.scss", 
-              "src/global.scss",
-              "./node_modules/materialize-css/dist/css/materialize.css"
+              "src/global.scss"            
             ],
-            "scripts": [
-              "./node_modules/materialize-css/dist/js/materialize.js"            
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
