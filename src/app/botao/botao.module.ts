@@ -15,6 +15,7 @@ import { BotaoPage } from './botao.page';
     IonicModule,
     BotaoPageRoutingModule
   ],
-  declarations: [BotaoPage]
+  declarations: [BotaoPage],
+  exports: [BotaoPage]
 })
 export class BotaoPageModule {}

@@ -1,19 +1,24 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>botao</ion-title>
+    <div class="botao">
+      <div>
+        <ion-button color="dark" (click)="abrirPagina('quemsomos/quemsomos')"> 
+          <i class="material-icons">add</i>
+        </ion-button>
+      </div>
+      <div>
+        
+        <ion-button color="dark" (click)="abrirPagina('home')"> 
+          <i class="material-icons">home</i>
+        </ion-button>
+      </div>
+      <div>
+        <ion-button color="dark" (click)="abrirPagina('carrinho')"> 
+          <i class="material-icons">shopping_cart</i>
+        </ion-button>
+      </div>      
+    </div>
+  
   </ion-toolbar>
 </ion-header>
-
-<ion-content>
-  <!-- <ion-icon name="homeoutline"></ion-icon>
-  <ion-button color="warning" (click)="abrirPagina('folder/Inbox')">Clique aqui<ion-button> -->
-
-   
-    <br>
-    <ion-button (click)="abrirPagina('quemsomos/quemsomos')"> 
-      <i class="material-icons">add</i>
-    </ion-button>
-    <br>
-</ion-content>    
-
 
