@@ -12,4 +12,7 @@ export class HomePage implements OnInit {
   ngOnInit() {
   }
 
+  sayHello() {
+  console.log("Olá filho")
+  }
 }
