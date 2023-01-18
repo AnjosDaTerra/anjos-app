@@ -1,5 +1,5 @@
 .container {
-    background-color: black;
+    //back-ground-color está como dark.
     height: 100%;
     width: 100%;
     color: white; 
@@ -12,21 +12,64 @@
     margin-top: 2px;
     background-color:red;
     height: 200px;
-    width: 400px; 
+    width: 100%;
+    position: relative;
+    display: inline-block; 
 }
 
 .retangulo02 {
     margin-top: 3px;
     background-color: yellow;
     height: 100px;
-    width: 200px; 
+    width: 50%; 
+    float: left; 
 }
 
 .retangulo03 {
     margin-top: 3px;
     background-color: white;
-    height: 50px;
-    width: 100px;
+    height: 100px;
+    width: 50%;
+    float: right;
+}
+.retangulo03>p {
+    color: black;
+    line-height: 16px;
+}
+.retangulo03>h5 {
+    color: black;
+    line-height: 0;
+}
+
+.retangulo04 {
+    margin-top: 3px;
+    width: 100%;
+    height: 120px;
+    background-color: green;
+    display:flexbox;
+    float: left
+}
+
+.retangulo05 {
+    width: 33.3%;
+    height: 100px;
+    background-color: blue;
+    float: left;
+}
+
+.retangulo06 {
+    width: 33.3%;
+    height: 100px;
+    background-color: white;
+    float: left;
+}
+
+
+.retangulo07 {
+    width: 33.4%;
+    height: 100px;
+    background-color: red;
+    float: left;
 }
 
 
