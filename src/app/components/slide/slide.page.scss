@@ -1,0 +1,36 @@
+@import 'swiper/scss';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/pagination';
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-button-next, .swiper-button-prev {
+    color:  white;
+    background-color: black;
+    opacity: 50%;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+}
+
+
+.swiper-pagination-bullet {
+    background-color:limegreen;
+    width: 9px;
+    height: 9px;
+}
+
+
+.swiper-pagination-bullet-active {
+    background-color: lime;
+    width: 11px;
+    height: 11px;
+}
