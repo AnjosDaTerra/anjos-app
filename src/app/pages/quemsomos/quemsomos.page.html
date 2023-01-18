@@ -1,14 +1,55 @@
 <ion-header>
-  <ion-toolbar color="dark">
-    <ion-title color="light">Quem somos</ion-title>
+  <ion-toolbar color="">
+    <ion-title color="dark">Quem somos</ion-title>
     <ion-buttons slot="start">
       <ion-menu-button menu="main-menu"></ion-menu-button>
     </ion-buttons>
   </ion-toolbar>
+
 </ion-header>
 
 
-<ion-content color="dark">
-  <ion-img [src]="image" class="image"></ion-img> 
+<ion-content color="">
+<div class="container">
+
+  <div class="coluna1">
+<br>
+    <h1>Sobre a (Nome da empresa)</h1>
+
+    <p>Nossa Empresa de recursos de computação tem por finalidades promover a uma facilidade smaior nas compras de peças de computador que o cliente precisa no Brasil.</p>
+    
+  </div>
+
+    <div class="coluna2">
+
+    <h1>Objetivo</h1>
+    <p>Nosso objetivo é desenvolver um sistema que possa juntar todas as lojas de computação de sua região 
+  e você poder olhar as peças que precisa sem precisar ficar indo de site em site em busca do seu objetivo.</p>
+
+  <h1>Visão</h1>
+  <p>Visamos, também, promover a facilidade do cliente em procurar os produtos que deseja , realizando a comprar noralmente, podendo retirar o produto na loja ou ecomenda, com uma taxa pequena.</p>
+
+  </div>  
+  <ion-fab horizontal="end">
+    <ion-fab-button color="dark" size="small">
+      <ion-icon name="git-branch-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button>
+        <ion-icon color="dark" name="logo-whatsapp"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button>
+        <ion-icon color="dark" name="logo-facebook"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button>
+        <ion-icon color="dark" name="logo-youtube"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button>
+        <ion-icon color="dark" name="logo-twitter"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+</div>
+<br>
 
 </ion-content>
