@@ -26,6 +26,10 @@ const routes: Routes = [
     path: 'slide',
     loadChildren: () => import('./components/slide/slide.module').then( m => m.SlidePageModule)
   },
+  {
+    path: 'cadastrar',
+    loadChildren: () => import('./pages/cadastrar/cadastrar.module').then( m => m.CadastrarPageModule)
+  }
 
 
 ];
