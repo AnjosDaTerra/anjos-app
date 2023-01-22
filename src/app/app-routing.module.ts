@@ -23,6 +23,10 @@ const routes: Routes = [
     path: 'footer',
     loadChildren: () => import('./shared/footer/footer.module').then( m => m.FooterPageModule)
   },
+  {
+    path: 'cadastrar',
+    loadChildren: () => import('./pages/cadastrar/cadastrar.module').then( m => m.CadastrarPageModule)
+  }
 
 ];
 
