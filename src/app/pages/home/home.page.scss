@@ -51,10 +51,11 @@
 .retangulo04 {
     margin-top: 3px;
     width: 100%;
-    height: 300px;
-    background-color: green;
-    display:flexbox;
-    float: left
+    height: 10px;
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+    // justify-content:center;
 }
 
 .retangulo05 {
@@ -72,14 +73,15 @@
 
 .retangulo {
     width: 33.3%;
-    height: 100px;
-    background-color: orange;
+    height: 10px;
+    background-color: green;
     float: left;
-    border: 4px solid white;
+    border: 4px solid black;
    
 }
 
 .DIVISAO2>h4 {
-    color: black
+    color: white;
+    text-align: center;
 }
 

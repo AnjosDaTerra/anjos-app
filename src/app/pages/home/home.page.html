@@ -22,32 +22,28 @@
   
       <div class="retangulo03">
         <button (click)="sayHello()"><i class="large material-icons">location_on</i>
-          <p><strong>Lojas próximas</strong></p>
+          <p><strong>Selecione o seu estado</strong></p>         
         </button>
       </div>
     </div>
 
     <div class="retangulo04">
-      <h4> slide:Nome da loja, foto das peças de hardware </h4>
-      {{nome}}
     </div>
-   
-    
     <div class="DIVISAO2">
       <h4>Como funciona ?</h4>
       <div class="retangulo">
         <div>
-          <img src="../../../assets/icon/browser.png" alt="">
+         <button (click)="presentAlert1()"><img src="../../../assets/icon/browser.png" alt=""></button>
         </div>
       </div>
       <div class="retangulo">
         <div>
-          <img src="../../../assets/icon/pay-per-click.png" alt="">
+          <button (click)="presentAlert2()"><img src="../../../assets/icon/pay-per-click.png" alt=""></button>
         </div>
       </div>
       <div class="retangulo">
         <div>
-          <img src="../../../assets/icon/delivered.png" alt="">
+          <button (click)="presentAlert3()"><img src="../../../assets/icon/delivered.png" alt=""></button>
         </div>
       </div>
     </div>   
