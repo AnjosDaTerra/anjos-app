@@ -35,6 +35,10 @@ const routes: Routes = [
   {
     path: 'cadastrar',
     loadChildren: () => import('./pages/cadastrar/cadastrar.module').then(m => m.CadastrarPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)
   }
 
 
