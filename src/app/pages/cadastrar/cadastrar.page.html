@@ -1,6 +1,7 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title class="titulo">Tela de Cadastro</ion-title>
+
   </ion-toolbar>
 </ion-header>
 
@@ -9,6 +10,7 @@
   <ion-card>
     <ion-card-header>
       <ion-card-title>Cadastro do cliente</ion-card-title>
+
     </ion-card-header>
 
     <ion-card-content>
@@ -33,23 +35,35 @@
         <ion-input></ion-input>
       </ion-item>
 
+      <ion-item class="text">
+        <ion-label position="floating">Telefone</ion-label>
+        <ion-input type="tel"></ion-input>
+      </ion-item>
+
 
       <ion-item class="nascimento">
-        <ion-label position="floating">Nascimentog</ion-label>
+        <ion-label position="floating">Nascimento</ion-label>
         <ion-input type="date"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label position="floating">Digite uma senha</ion-label>
-        <ion-input type="password"></ion-input>
+        <ion-input [type]="isTextFieldType ? 'text' : 'password'" placeholder="Digite sua senha">
+        </ion-input>
+        <button (click)="togglePasswordFieldType()">
+          <ion-icon [name]="isTextFieldType ? 'eye' : 'eye-off'" >
+          </ion-icon>
+        </button>
       </ion-item>
 
       <ion-item>
-        <ion-label position="floating">Digite sua senha novamente</ion-label>
-        <ion-input type="password"></ion-input>
+        <ion-input [type]="isTextFieldType ? 'text' : 'password'" placeholder="Confirme sua senha">
+        </ion-input>
+        <button (click)="togglePasswordFieldType()">
+          <ion-icon [name]="isTextFieldType ? 'eye' : 'eye-off'" >
+          </ion-icon>
+        </button>
       </ion-item>
       <br>
-
       <ion-button expand="full">
         <ion-icon slot="start" name="checkmark-outline"></ion-icon>
         Gravar
@@ -57,4 +71,11 @@
 
     </ion-card-content>
   </ion-card>
+  <div class="teste">
+    <div>
+      <ion-datetime locale="pt-br"></ion-datetime>
+    </div>
+  </div>
+
+
 </ion-content>

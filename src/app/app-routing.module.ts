@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
+
 const routes: Routes = [
   {
     path: '',
@@ -9,27 +10,27 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule)
   },
   {
     path: 'folder/:id',
-    loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
+    loadChildren: () => import('./folder/folder.module').then(m => m.FolderPageModule)
   },
   {
     path: 'quemsomos/:id',
-    loadChildren: () => import('./pages/quemsomos/quemsomos.module').then( m => m.QuemsomosPageModule)
+    loadChildren: () => import('./pages/quemsomos/quemsomos.module').then(m => m.QuemsomosPageModule)
   },
   {
     path: 'botao',
-    loadChildren: () => import('./botao/botao.module').then( m => m.BotaoPageModule)
+    loadChildren: () => import('./botao/botao.module').then(m => m.BotaoPageModule)
   },
   {
     path: 'footer',
-    loadChildren: () => import('./shared/footer/footer.module').then( m => m.FooterPageModule)
+    loadChildren: () => import('./shared/footer/footer.module').then(m => m.FooterPageModule)
   },
   {
     path: 'cadastrar',
-    loadChildren: () => import('./pages/cadastrar/cadastrar.module').then( m => m.CadastrarPageModule)
+    loadChildren: () => import('./pages/cadastrar/cadastrar.module').then(m => m.CadastrarPageModule)
   }
 
 ];
@@ -40,4 +41,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
