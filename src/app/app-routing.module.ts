@@ -22,13 +22,18 @@ const routes: Routes = [
   {
     path: 'footer',
     loadChildren: () => import('./shared/footer/footer.module').then( m => m.FooterPageModule)
-  },  {
+  },
+  {
     path: 'slide',
     loadChildren: () => import('./components/slide/slide.module').then( m => m.SlidePageModule)
   },
   {
     path: 'cadastrar',
     loadChildren: () => import('./pages/cadastrar/cadastrar.module').then( m => m.CadastrarPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   }
 
 
