@@ -60,10 +60,11 @@
 .retangulo04 {
     margin-top: 3px;
     width: 100%;
-    height: 10px;
+    height: 200px;
     background-color: black;
     display: flex;
     flex-direction: row;
+    color: white;
     // justify-content:center;
 }
 
@@ -89,8 +90,15 @@
    
 }
 
+.DIVISAO2 {
+    background-color: black;
+    width: 100%;
+    height: 150px;
+}
+
 .DIVISAO2>h4 {
-    color: white;
+    color: gainsboro;
     text-align: center;
+    background-color: black;
 }
 
