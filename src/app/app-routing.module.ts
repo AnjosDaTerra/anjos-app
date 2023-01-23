@@ -29,9 +29,14 @@ const routes: Routes = [
     loadChildren: () => import('./shared/footer/footer.module').then(m => m.FooterPageModule)
   },
   {
+    path: 'slide',
+    loadChildren: () => import('./components/slide/slide.module').then( m => m.SlidePageModule)
+  },
+  {
     path: 'cadastrar',
     loadChildren: () => import('./pages/cadastrar/cadastrar.module').then(m => m.CadastrarPageModule)
   }
+
 
 ];
 
