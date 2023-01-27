@@ -8,7 +8,6 @@ import { HomePageRoutingModule } from './home-routing.module';
 
 import { HomePage } from './home.page';
 import { SlidePageModule } from 'src/app/components/slide/slide.module';
-import { RegiaoLojasPageModule } from 'src/app/components/regiao-lojas/regiao-lojas.module';
 @NgModule({
   imports: [
     CommonModule,
@@ -16,8 +15,7 @@ import { RegiaoLojasPageModule } from 'src/app/components/regiao-lojas/regiao-lo
     IonicModule,
     HomePageRoutingModule,
     SlidePageModule,
-    RegiaoLojasPageModule
-  ],
+    ],
   declarations: [HomePage]
 })
 export class HomePageModule {}

@@ -24,32 +24,5 @@ export class HomePage implements OnInit {
     });
     return this.nome
   }
-
-  async presentAlert1() {
-    const alert = await this.alert.create({
-      header: 'Primeiro passo',
-      subHeader: 'Escolha o seu produto',
-      message: '',
-      buttons: ['OK'],
-    });
-    await alert.present();
-  }
-  async presentAlert2() {
-    const alert = await this.alert.create({
-      header: 'Segundo passo',
-      subHeader: 'Escolha a forma de pagamento',
-      message: '',
-      buttons: ['OK'],
-    });
-    await alert.present();
-  }
-  async presentAlert3() {
-    const alert = await this.alert.create({
-      header: 'Último passo',
-      subHeader: 'Endereço de entrega',
-      message: '',
-      buttons: ['OK'],
-    });
-    await alert.present();
-  }
+  
 }
