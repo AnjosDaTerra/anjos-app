@@ -5,6 +5,8 @@
     align-items: center;
     flex-direction: row;
     height: 100vh;  
+    border-radius: 10px;
+    border: none;
     
 }
 .cadastro3{
@@ -15,6 +17,16 @@
     text-align: center;
     justify-content: center;
 }
-    
+.senha{
+    float: left ;
+    padding: 15px;
+}
+.entrar{
+    border-radius: 10px;
+    border:none;
+    padding: 15px;
+    width: 100%;
+}
+
     
 
