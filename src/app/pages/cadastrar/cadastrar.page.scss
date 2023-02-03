@@ -3,13 +3,32 @@
 
 }
 
-.teste {
-    width: 100%;
-    height: 200px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    right: auto;
-
+.senha{
+    font-weight: 800px;
 }
+
+.cadastro{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 800px;  
+    border-radius: 10px;
+    border: none;
+    
+}
+.p{
+    justify-content: center;
+    align-items: center;    
+    height: 100px;  
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    font-size: 28px;
+  
+    
+}
+
 
