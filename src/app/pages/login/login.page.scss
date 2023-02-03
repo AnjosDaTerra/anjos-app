@@ -4,14 +4,17 @@
     flex-direction: column;
 }
 
-
+.cadastro1{
+    text-align: center;
+    --color: #b25d00;
+}
 .cadastro2{
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    height: 400px;  
+    height: 350px;  
     border-radius: 10px;
     border: none;
     
@@ -19,6 +22,7 @@
 
 .imagem-logo{
     text-align: center;
+    
 }
 
 .cadastro3{
@@ -31,6 +35,7 @@
 }
 .center-3 {
     width: 100%;
+    font-size: 15px;
 }
 .cadastro4{
    // text-align: center;
