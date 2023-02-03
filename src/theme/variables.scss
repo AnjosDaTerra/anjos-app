@@ -74,6 +74,14 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  /* terra */
+  --ion-color-terra: #B25D00;
+	--ion-color-terra-rgb: 178,93,0;
+	--ion-color-terra-contrast: #ffffff;
+	--ion-color-terra-contrast-rgb: 255,255,255;
+	--ion-color-terra-shade: #9d5200;
+	--ion-color-terra-tint: #ba6d1a;
 }
 
 @media (prefers-color-scheme: dark) {
