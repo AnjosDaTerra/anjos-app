@@ -1,23 +1,14 @@
-.container-cabecalho{
+    .container-cabecalho{
     width: 100%;
     display: flex;
     flex-direction: column;
 }
-
+.cadastro7{
+    text-align: center; 
+}
 .cadastro1{
     text-align: center;
     --color: #b25d00;
-}
-.cadastro2{
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    height: 350px;  
-    border-radius: 10px;
-    border: none;
-    
 }
 
 .imagem-logo{
@@ -30,28 +21,12 @@
     flex-direction: row;
     justify-content: flex-start;
 }
-.left-3 {
+.left-3 {   
     width: 15%;
 }
 .center-3 {
     width: 100%;
     font-size: 15px;
 }
-.cadastro4{
-   // text-align: center;
-    justify-content: center;
-    
-}
-.senha{
-    float: left ;
-    padding: 15px;
-}
-.entrar{
-    border-radius: 10px;
-    border:none;
-    padding: 15px;
-    width: 100%;
-}
 
-    
 
