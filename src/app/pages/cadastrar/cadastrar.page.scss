@@ -1,34 +1,13 @@
-.titulo {
-    text-align: center;
-
-}
-
-.senha{
-    font-weight: 800px;
-}
-
-.cadastro{
-    text-align: center;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    height: 800px;  
-    border-radius: 10px;
-    border: none;
-    
-}
+        
 .p{
-    justify-content: center;
-    align-items: center;    
-    height: 100px;  
+    text-align: center;        
+}
+.cadastro1{
     text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    font-size: 28px;
-  
-    
+    --color: #b25d00;
+}       
+.cadastro7{
+    text-align: center; 
 }
 
 

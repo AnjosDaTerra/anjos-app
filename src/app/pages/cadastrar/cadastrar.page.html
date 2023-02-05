@@ -8,62 +8,91 @@
 <h1>Cadastro</h1>
 </div>
 
-<div class="cadastro">
-  
-  <ion-card>
-
     <ion-card-header>
-      
-
     </ion-card-header>
-
-    <ion-card-content>
-
-
-      <ion-item class="text" >
-        <ion-label position="floating" >CPF</ion-label >
-        <ion-input placeholder="Digite seu CPF"></ion-input>
-      </ion-item>
-      
-      <br>
-      <ion-item class="senha">
-        
-        <ion-input [type]="isTextFieldType ? 'text' : 'password'" placeholder="Digite sua senha">
-        </ion-input>
-        <button (click)="togglePasswordFieldType()">
-          <ion-icon [name]="isTextFieldType ? 'eye' : 'eye-off'" >
-          </ion-icon>
-        </button>
-      </ion-item  >
-
-      <ion-item class="senha1">
-        
-        <ion-input [type]="isTextFieldType ? 'text' : 'password'" placeholder="Confirme sua senha">
-        </ion-input>
-        <button (click)="togglePasswordFieldType()">
-          <ion-icon [name]="isTextFieldType ? 'eye' : 'eye-off'" >
-          </ion-icon>
-        </button>
-      </ion-item>
     
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-item class="text" >
+            <ion-label position="floating" >CPF</ion-label >
+            <ion-input placeholder="Digite seu CPF"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
 
-      <ion-item class="text">
-        <ion-label position="floating">E-mail</ion-label>
-        <ion-input placeholder="Digite seu E-mail"></ion-input>
-      </ion-item>
+      <ion-row>
+        <ion-col>
+                <ion-item class="senha">
+              
+                  <ion-input [type]="isTextFieldType ? 'text' : 'password'" placeholder="Digite sua senha">
+                  </ion-input>
+                  <button (click)="togglePasswordFieldType()">
+                    <ion-icon [name]="isTextFieldType ? 'eye' : 'eye-off'" >
+                    </ion-icon>
+                  </button>
+                </ion-item  >
+          
+                <ion-item class="senha1">
+                  
+                  <ion-input [type]="isTextFieldType ? 'text' : 'password'" placeholder="Confirme sua senha">
+                  </ion-input>
+                  <button (click)="togglePasswordFieldType()">
+                    <ion-icon [name]="isTextFieldType ? 'eye' : 'eye-off'" >
+                    </ion-icon>
+                  </button>
+                </ion-item>
+              
+          
+                
+        </ion-col>
+      </ion-row>
 
-      <br>
-      <ion-button expand="full" shape="round" >
-        <ion-icon slot="start" name=""></ion-icon>
-        Cadastrar
-      </ion-button>
-<br>
-<div class="cadastro1">
-  <p>Já posui cadastro?</p>
-  <a href="index.php?site=forgotpw">Entre Aqui</a>
-</div>
-<br>
+      <ion-row>
+        <ion-col>
+          <ion-item class="text">
+            <ion-label position="floating">E-mail</ion-label>
+            <ion-input placeholder="Digite seu E-mail"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
 
-    </ion-card-content>
-  </ion-card>
-</div>
+      <ion-row>
+        <ion-col>
+          <ion-button expand="full" expand="block" >
+            <ion-icon slot="start" name=""></ion-icon>
+            Cadastrar
+          </ion-button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <div class="cadastro7">
+          <p>Já posui cadastro?</p>
+        </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <div class="cadastro1">
+          <ion-button color="warning" fill="clear">Entre Aqui</ion-button>
+        </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+      
+      
+      
+      
+
+     
+
+
+
+
+
+   
+  
+
