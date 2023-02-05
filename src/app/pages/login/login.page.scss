@@ -9,7 +9,13 @@
 .cadastro1{
     text-align: center;
     --color: #b25d00;
-}
+}   
+
+.container-cabecalho{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}       
 
 .imagem-logo{
     text-align: center;
