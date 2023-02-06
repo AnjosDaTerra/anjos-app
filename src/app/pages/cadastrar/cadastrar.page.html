@@ -1,81 +1,57 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title class="titulo">Tela de Cadastro</ion-title>
-
+    <ion-title class="titulo"></ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-grid>
 
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Cadastro do cliente</ion-card-title>
-
-    </ion-card-header>
-
-    <ion-card-content>
-
-
-      <ion-item class="text">
-        <ion-label position="floating">Nome completo</ion-label>
-        <ion-input></ion-input>
-      </ion-item>
+  <ion-row>
+    <ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">CPF</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+      </ion-col>
+  </ion-row>
 
 
+  <ion-row>
+    <ion-item>
+      <ion-input [type]="isTextFieldType ? 'text' : 'password'" placeholder="Digite sua senha">
+      </ion-input>
+      <button (click)="togglePasswordFieldType()">
+        <ion-icon [name]="isTextFieldType ? 'eye' : 'eye-off'">
+        </ion-icon>
+      </button>
+    </ion-item>
 
-      <ion-item class="text">
-        <ion-label position="floating">CPF</ion-label>
-        <ion-input></ion-input>
-      </ion-item>
+    <ion-item>
+      <ion-input [type]="isTextFieldType ? 'text' : 'password'" placeholder="Confirme sua senha">
+      </ion-input>
+      <button (click)="togglePasswordFieldType()">
+        <ion-icon [name]="isTextFieldType ? 'eye' : 'eye-off'">
+        </ion-icon>
+      </button>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">E-mail</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    </ion-col>
+  </ion-row>
 
 
-
-      <ion-item class="text">
-        <ion-label position="floating">E-mail</ion-label>
-        <ion-input></ion-input>
-      </ion-item>
-
-      <ion-item class="text">
-        <ion-label position="floating">Telefone</ion-label>
-        <ion-input type="tel"></ion-input>
-      </ion-item>
-
-
-      <ion-item class="nascimento">
-        <ion-label position="floating">Nascimento</ion-label>
-        <ion-input type="date"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-input [type]="isTextFieldType ? 'text' : 'password'" placeholder="Digite sua senha">
-        </ion-input>
-        <button (click)="togglePasswordFieldType()">
-          <ion-icon [name]="isTextFieldType ? 'eye' : 'eye-off'" >
-          </ion-icon>
-        </button>
-      </ion-item>
-
-      <ion-item>
-        <ion-input [type]="isTextFieldType ? 'text' : 'password'" placeholder="Confirme sua senha">
-        </ion-input>
-        <button (click)="togglePasswordFieldType()">
-          <ion-icon [name]="isTextFieldType ? 'eye' : 'eye-off'" >
-          </ion-icon>
-        </button>
-      </ion-item>
-      <br>
-      <ion-button expand="full">
+  <ion-row>
+    <ion-col>
+      <ion-button>
         <ion-icon slot="start" name="checkmark-outline"></ion-icon>
         Gravar
       </ion-button>
+    </ion-col>
+  </ion-row>
 
-    </ion-card-content>
-  </ion-card>
-  <div class="teste">
-    <div>
-      <ion-datetime locale="pt-br"></ion-datetime>
-    </div>
-  </div>
-
-
-</ion-content>
+  
+</ion-grid>
