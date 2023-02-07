@@ -77,16 +77,16 @@
 
     <!-- CADASTRO -->
     <ion-grid *ngIf="botaoCL==false">
-      <form #form="ngForm" (ngSubmit)="cadastrar(form)">
+      <form [formGroup]="form1" (ngSubmit)="cadastrar()">
       <ion-row>
         <ion-col>
             <ion-item>
               <ion-label position="floating">CPF</ion-label>
-              <ion-input id="cpf" name="cpf" ngModel></ion-input>
+              <ion-input id="cpf" name="cpf" formControlName="cpf"></ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="floating">E-mail</ion-label>
-              <ion-input  type="email" id="email" name="email" ngModel></ion-input>
+              <ion-input  type="email" id="email" name="email" formControlName="email"></ion-input>
             </ion-item>
           </ion-col>
       </ion-row>
@@ -96,7 +96,7 @@
         <ion-col>
     
         <ion-item>
-          <ion-input [type]="isTextFieldType ? 'text' : 'password'" placeholder="Digite sua senha">  <!--Fazer a verficacao de senha-->
+          <ion-input [type]="isTextFieldType ? 'text' : 'password'" placeholder="Digite sua senha" formControlName="password">  <!--Fazer a verficacao de senha-->
           </ion-input>
           <button (click)="togglePasswordFieldType()">
             <ion-icon [name]="isTextFieldType ? 'eye' : 'eye-off'">
@@ -105,7 +105,7 @@
         </ion-item>
     
         <ion-item>
-          <ion-input [type]="isTextFieldType ? 'text' : 'password'" placeholder="Confirme sua senha" id="senha" name="senha" ngModel>
+          <ion-input [type]="isTextFieldType ? 'text' : 'password'" placeholder="Confirme sua senha" id="senha" name="senha" formControlName="confirmPassword">
           </ion-input>
           <button (click)="togglePasswordFieldType()">
             <ion-icon [name]="isTextFieldType ? 'eye' : 'eye-off'">
@@ -120,7 +120,7 @@
       <ion-row>
         <ion-col>  
           <div class="cadastrar">
-            <ion-button color="primary" expand="block" type="submit">Cadastrar</ion-button>
+            <ion-button color="primary" expand="block" type="submit" [disabled]="!form1.valid">Cadastrar</ion-button>
           </div>
     
         </ion-col>
