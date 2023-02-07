@@ -82,8 +82,11 @@
         <ion-col>
             <ion-item>
               <ion-label position="floating">CPF</ion-label>
-              <ion-input id="cpf" name="cpf" formControlName="cpf"></ion-input>
+              <ion-input id="cpf" name="cpf" type="text" maxlength="11" formControlName="cpf"></ion-input>
             </ion-item>
+            <ng-container>
+              
+            </ng-container>
             <ion-item>
               <ion-label position="floating">E-mail</ion-label>
               <ion-input  type="email" id="email" name="email" formControlName="email"></ion-input>
