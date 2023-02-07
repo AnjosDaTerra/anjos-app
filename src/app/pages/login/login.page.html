@@ -1,6 +1,5 @@
-
 <ion-content>
-  <div class="container-cabecalho">
+  <!-- <div class="container-cabecalho"> -->
     <div class="imagem-logo">
       <br>
       <img src="../../../assets/anjosdaterr_ofc-circular.png" width="60%" alt="">
@@ -8,90 +7,139 @@
     <div class="cadastro3">
       <div class="left-3"></div>
       <div class="center-3">
-        <h1>Login</h1>
-        <p>Entre na sua conta cadastrada.</p>
+        <h1>{{titulo}}</h1>
       </div>
     </div>
-  </div>
+  <!-- </div> -->
  
 <!-- <div class="cadastro2"> -->
+  
+  <!-- LOGIN -->
+  <ion-grid *ngIf="botaoCL==true">
+    <form #form="ngForm">
+      <ion-row>
+        <ion-col>
+          
+          <ion-item class="text-white">         
+            <ion-label position="floating">CPF :</ion-label>
+            <ion-input placeholder="000.000.001-0" id="cpf" name="cpf"></ion-input>
+          </ion-item>
 
-  <ion-grid>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item class="text-white">
+            <ion-label position="floating">Senha :</ion-label>
+      
+            <ion-input placeholder="Digite sua senha"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
 
 
-    <ion-row>
-      <ion-col>
-        
-        <ion-item class="text-white">         
-          <ion-label position="floating">CPF :</ion-label>
-          <ion-input placeholder="000.000.001-0"></ion-input>
-        </ion-item>
+      <ion-row>
+        <ion-col>
+          <div class="senha">
+            <a href="home.page.html">Esqueceu a senha?</a>
+          </div>
+        </ion-col>
+      </ion-row>
 
-      </ion-col>
-    </ion-row>
+      <ion-row>
+        <ion-col>  
+          <div class="entrar">
+            <ion-button color="primary" expand="block">Entrar</ion-button>
+          </div>
+        </ion-col>
 
-    <ion-row>
-      <ion-col>
-        <ion-item class="text-white">
-          <ion-label position="floating">Senha :</ion-label>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <div class="cadastro7">
+          <p>Não posui cadastro?</p>
+        </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <div class="cadastro1">      
+            <ion-button color="warning" fill="clear" (click)="mudarCadastroLogin()">{{botaoCLmsg}}</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+      
+    </form>
+    </ion-grid>
+
+    <!-- CADASTRO -->
+    <ion-grid *ngIf="botaoCL==false">
+      <form #form="ngForm" (ngSubmit)="cadastrar(form)">
+      <ion-row>
+        <ion-col>
+            <ion-item>
+              <ion-label position="floating">CPF</ion-label>
+              <ion-input id="cpf" name="cpf" ngModel></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">E-mail</ion-label>
+              <ion-input  type="email" id="email" name="email" ngModel></ion-input>
+            </ion-item>
+          </ion-col>
+      </ion-row>
     
-          <ion-input placeholder="Digite sua senha"></ion-input>
+    
+      <ion-row>
+        <ion-col>
+    
+        <ion-item>
+          <ion-input [type]="isTextFieldType ? 'text' : 'password'" placeholder="Digite sua senha">  <!--Fazer a verficacao de senha-->
+          </ion-input>
+          <button (click)="togglePasswordFieldType()">
+            <ion-icon [name]="isTextFieldType ? 'eye' : 'eye-off'">
+            </ion-icon>
+          </button>
         </ion-item>
-      </ion-col>
-    </ion-row>
+    
+        <ion-item>
+          <ion-input [type]="isTextFieldType ? 'text' : 'password'" placeholder="Confirme sua senha" id="senha" name="senha" ngModel>
+          </ion-input>
+          <button (click)="togglePasswordFieldType()">
+            <ion-icon [name]="isTextFieldType ? 'eye' : 'eye-off'">
+            </ion-icon>
+          </button>
+        </ion-item>
 
-
-    <ion-row>
-      <ion-col>
-        <div class="senha">
-          <a href="home.page.html">Esqueceu a senha?</a>
-        </div>
-      </ion-col>
-    </ion-row>
-
-    <ion-row>
-      <ion-col>  
-        <div class="entrar">
-          <ion-button color="primary" expand="block" >         
-            <ion-icon slot="start" name=""></ion-icon>Entrar
-          </ion-button>
-        </div>
-      </ion-col>
-
-    </ion-row>
-
-    <ion-row>
-      <ion-col>
-        <div class="cadastro7">
-        <p>Não posui cadastro?</p>
-      </div>
-      </ion-col>
-    </ion-row>
-
-    <ion-row>
-      <ion-col>
-        <div class="cadastro1">      
-          <ion-button color="warning" fill="clear">Entre Aqui</ion-button>
-        </div>
-      </ion-col>
-    </ion-row>
-
+        </ion-col>
+      </ion-row>
+    
+    
+      <ion-row>
+        <ion-col>  
+          <div class="cadastrar">
+            <ion-button color="primary" expand="block" type="submit">Cadastrar</ion-button>
+          </div>
+    
+        </ion-col>
+      </ion-row>
+      
+      <ion-row>
+        <ion-col>
+        </ion-col>
+      </ion-row>
+    
+      <ion-row>
+        <ion-col>
+          <div class="cadastro1">      
+            <ion-button color="warning" fill="clear" (click)="mudarCadastroLogin()">{{botaoCLmsg}}</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </form>
   </ion-grid>
-      
-      
-
-     
-       
-     
-      
-      
-    
-      
-      
-    
-    
-      
-   
     
   <!-- </div> -->
 </ion-content>

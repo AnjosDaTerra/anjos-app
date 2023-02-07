@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Usuario } from 'src/app/Core/models/usuario.interface';
+import { Usuario } from 'src/app/Core/models/vitima/login.interface';
 import { AlertController } from '@ionic/angular';
 @Component({
   selector: 'app-home',
@@ -16,10 +16,10 @@ export class HomePage implements OnInit {
   constructor(private readonly httpClient: HttpClient, private readonly alert: AlertController) { }
    
   ngOnInit() {
-    //this.sayHello()
+    this.sayHello()
   }
   public async sayHello() : Promise<Usuario> {
-    this.httpClient.get<Usuario>('http://127.0.0.1:4000/cliente/usarios').subscribe(resultado => {
+    this.httpClient.get<Usuario>('http://127.0.0.1:4000/vitima/usuarios').subscribe(resultado => {
       this.nome = resultado;
     });
     return this.nome

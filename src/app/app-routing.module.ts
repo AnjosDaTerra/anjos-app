@@ -29,10 +29,6 @@ const routes: Routes = [
     loadChildren: () => import('./shared/footer/footer.module').then(m => m.FooterPageModule)
   },
   {
-    path: 'cadastrar',
-    loadChildren: () => import('./pages/cadastrar/cadastrar.module').then(m => m.CadastrarPageModule)
-  },
-  {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)
   }
