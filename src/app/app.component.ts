@@ -9,7 +9,8 @@ export class AppComponent {
     { title: 'Home', url: '/home', icon: 'mail' },
     { title: 'Quem somos', url: '/quemsomos/quemsomos', icon: 'paper-plane' },
     { title: 'Cadastrar', url: '/cadastrar', icon: 'paper-plane' },
-    { title: 'Login', url: '/login', icon: 'mail'}
+    { title: 'Login', url: '/login', icon: 'mail'},
+    { title: 'Endereço', url: '/endereco', icon: 'mail'}
 
     // { title: 'Lojas', url: '/folder/Favorites', icon: 'heart' }
   ];
