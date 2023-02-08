@@ -20,31 +20,32 @@ export class LoginPage implements OnInit {
     headers: new HttpHeaders({'Content-Type' : 'application/json'})
   } 
   //---------------------------------
-  form1! : FormGroup
+  cadastroForm! : FormGroup
   error_messages = {
     'cpf': [
-      { type: 'required',  message: 'Campo obrigatório'},
-      { type: 'minlength', message: 'CPF deve ter 11 algarismos'},
-      { type: 'maxlenght', message: 'CPF deve ter 11 algarismos'}
+      { type: 'required',  message: '*'},
+      { type: 'minlength', message: '* o cpf deve ter 11 algarismos'},
+      { type: 'maxlenght', message: '* o cpf deve ter 11 algarismos'},
+      { type: 'pattern',   message: '* somente números são permitidos'}
     ],
 
     'email': [
-      { type: 'required',  message: 'Campo obrigatório'},
-      { type: 'minlenght', message: 'Número de caracteres insuficiente'},
-      { type: 'maxlenght', message: 'Você excedeu o número de caracteres'},
-      { type: 'required',  message: 'Por favor, digite um email válido'}
+      { type: 'required',  message: '*'},
+      { type: 'minlength', message: '* número de caracteres insuficiente'},
+      { type: 'maxlenght', message: '* você excedeu o número de caracteres'},
+      { type: 'email',     message: '* por favor, digite um email válido'}
     ],
     
     'password': [
-      { type: 'required',  message: 'Campo obrigatório'},
-      { type: 'minlenght', message: 'Sua senha tem menos de 4 caracteres'},
-      { type: 'maxlenght', message: 'Sua senha passou do tamanho permetido'}
+      { type: 'required',  message: '*'},
+      { type: 'minlength', message: 'Sua senha tem menos de 4 caracteres'},
+      { type: 'maxlenght', message: 'Sua senha passou do tamanho permetido'},
+
     ],
 
     'confirmPassword': [
       { type: 'required',  message: 'Campo obrigatório'},
-      { type: 'minlenght', message: 'Sua senha tem menos de 4 caracteres'},
-      { type: 'maxlenght', message: 'Sua senha passou do tamanho permetido'}
+      { type: 'Mustmatch', message: 'errado'}
     ]
   }
 
@@ -52,15 +53,19 @@ export class LoginPage implements OnInit {
     private readonly httpClient: HttpClient, 
     private util:UtilidadesService, 
     private formBuilder: FormBuilder
-  ) { }
+  ) { 
+   
+  }
 
   ngOnInit() {
-    this.form1 = this.formBuilder.group({
-      cpf: new FormControl('', Validators.compose([
+    this.cadastroForm = this.formBuilder.group({
+      cpf: ['', 
+        Validators.compose([
         Validators.required,
         Validators.minLength(11),
-        Validators.maxLength(11)
-      ])),
+        Validators.maxLength(11),
+        Validators.pattern('^[0-9]+$')
+      ])],
       email: new FormControl('', Validators.compose([
         Validators.required,
         Validators.minLength(6),
@@ -72,26 +77,41 @@ export class LoginPage implements OnInit {
         Validators.minLength(4),
         Validators.maxLength(30)
       ])),
-      confirmPassowrd: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.minLength(4),
-        Validators.maxLength(30)
+      confirmPassword: new FormControl('', Validators.compose([
+        Validators.required
       ]))
-    }, {
-        validators: this.checkPassword.bind(this)    
-      });
+    }, 
+    {
+      validators: this.mustMatch('password','confirmPassword')
+    }
+    );
+  }
+  
+  get cadastroFormControl() {
+    return this.cadastroForm.controls;
   }
 
   togglePasswordFieldType() {
     this.isTextFieldType = !this.isTextFieldType;
   }
+  
+  //Metodo de comparar senhas
+  mustMatch(password: string, confirmPassword: string) {
+    return (fg: FormGroup) => {
+      const passwordControl = fg.controls[password];
+      const confirmPasswordControl = fg.controls[confirmPassword];
 
-  public async checkPassword() {
-    const password = this.form1.value['password'];
-    const confirmPassword = this.form1.value['confirmPassword'];
-    if(password === confirmPassword) { return null } else { return true };
+      if(confirmPasswordControl.errors && !confirmPasswordControl.errors['Mustmatch']) {
+        return;
+      }
+
+      if(passwordControl.value !== confirmPasswordControl.value) {
+        confirmPasswordControl.setErrors({Mustmatch: true});
+      } else {
+        confirmPasswordControl.setErrors(null);
+      }
+    }
   }
-
   
   public mudarCadastroLogin() {
     this.botaoCL = !this.botaoCL;
@@ -107,11 +127,11 @@ export class LoginPage implements OnInit {
   public cadastrar() {
     //Pega os valores do formulario
      let objCadastro: Usuario = {
-       cpf: this.form1.value['cpf'],
-       senha: this.form1.value['password'],
-       email: this.form1.value['email']
+       cpf: this.cadastroForm.value['cpf'],
+       senha: this.cadastroForm.value['password'],
+       email: this.cadastroForm.value['email']
      }
-    console.log("form",this.form1.value['cpf']);
+    console.log("form",this.cadastroForm.value['cpf']);
     console.log(objCadastro)
 
     //Faz a chamada do endpoint de cadastro
