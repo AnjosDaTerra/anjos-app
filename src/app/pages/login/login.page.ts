@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { MenuController } from '@ionic/angular';
 import { Usuario } from 'src/app/Core/models/vitima/login.interface';
 import { UtilidadesService } from 'src/app/Core/services/utilidades.service';
 
@@ -52,9 +53,10 @@ export class LoginPage implements OnInit {
   constructor(
     private readonly httpClient: HttpClient, 
     private util:UtilidadesService, 
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private menuCtrl: MenuController
   ) { 
-   
+   this.menuCtrl.enable(false, 'main-menu')
   }
 
   ngOnInit() {
@@ -131,17 +133,22 @@ export class LoginPage implements OnInit {
        senha: this.cadastroForm.value['confirmPassword'],
        email: this.cadastroForm.value['email']
      }
-    console.log("form",this.cadastroForm.value['cpf']);
-    console.log(objCadastro)
 
     //Faz a chamada do endpoint de cadastro
-    this.httpClient.post<Usuario|string>('http://127.0.0.1:4000/vitima/criar-login',objCadastro,this.httpOptions).subscribe((result) => {
+    this.httpClient.post<Usuario|string>('http://10.136.35.61:4000/vitima/criar-login',objCadastro,this.httpOptions).subscribe((result) => {
       if(result == "200") {
         this.util.informando('Cadastro realizado com sucesso!', 'success', 'top', 5000);
       } else {
         this.util.informando('CPF já cadastrado!', 'danger', 'top', 5000);
       }
     });
+  }
+
+  public logar() {
+    let objLogin: Usuario = {
+      cpf: '21',
+      senha: '123'
+    }
   }
 
 }
