@@ -16,12 +16,15 @@ export class LoginPage implements OnInit {
   botaoCL: boolean = true;
   botaoCLmsg: string = 'Cadastra-se';
   titulo: string = 'Login';
-  //Tenho que ver onde vou por esse httpOptions
+  //Tenho que ver onde vou por esse httpOptions e a chamadas http
   httpOptions = {
     headers: new HttpHeaders({'Content-Type' : 'application/json'})
   } 
-  //---------------------------------
-  cadastroForm! : FormGroup
+  readonly API = 'http://127.0.0.1:4000';
+  //--------------------------------------------
+  cadastroForm! :FormGroup
+  loginForm! :FormGroup
+
   error_messages = {
     'cpf': [
       { type: 'required',  message: '*'},
@@ -84,9 +87,19 @@ export class LoginPage implements OnInit {
       ]))
     }, 
     {
-      validators: this.mustMatch('password','confirmPassword')
+      validators: this.mustMatch('password','confirmPassword') //@deprecated
     }
     );
+
+    this.loginForm = this.formBuilder.group({
+      cpf: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
+
+      password: new FormControl('', Validators.compose([
+        Validators.required
+      ]))
+    })
   }
   
   get cadastroFormControl() {
@@ -135,7 +148,7 @@ export class LoginPage implements OnInit {
      }
 
     //Faz a chamada do endpoint de cadastro
-    this.httpClient.post<Usuario|string>('http://10.136.35.61:4000/vitima/criar-login',objCadastro,this.httpOptions).subscribe((result) => {
+    this.httpClient.post<Usuario|string>(`${this.API}/vitima/criar-login`,objCadastro,this.httpOptions).subscribe((result) => {
       if(result == "200") {
         this.util.informando('Cadastro realizado com sucesso!', 'success', 'top', 5000);
       } else {
@@ -145,10 +158,16 @@ export class LoginPage implements OnInit {
   }
 
   public logar() {
-    let objLogin: Usuario = {
-      cpf: '21',
-      senha: '123'
-    }
+    const cpf = this.loginForm.value['cpf'];
+    const senha = this.loginForm.value['password'];
+    this.httpClient.get<string>(`${this.API}/vitima/check-login/${cpf}/${senha}`).subscribe((result) => {
+      if(result == "200") {
+        //fazer a lógica pra para a página home
+      } else {
+        this.util.informando('Credenciais incorretas', 'danger', 'top', 3000);
+      }
+      
+    })
   }
 
 }

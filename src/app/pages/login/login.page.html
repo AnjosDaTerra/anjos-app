@@ -2,7 +2,7 @@
   <!-- <div class="container-cabecalho"> -->
     <div class="imagem-logo">
       <br>
-      <img src="../../../assets/anjosdaterr_ofc-circular.png" width="60%" alt="">
+      <img src="../../../assets/anjos_da_terra.png" width="60%" alt="">
     </div>
     <div class="cadastro3">
       <div class="left-3"></div>
@@ -17,13 +17,13 @@
 
   <!-- LOGIN -->
   <ion-grid *ngIf="botaoCL==true">
-    <form #form="ngForm">
+    <form [formGroup]="loginForm" (ngSubmit)="logar()">
       <ion-row>
         <ion-col>
           
           <ion-item class="text-white">         
             <ion-label position="floating">CPF :</ion-label>
-            <ion-input placeholder="000.000.001-0" id="cpf" name="cpf"></ion-input>
+            <ion-input placeholder="000.000.001-0" id="cpf" name="cpf" type="text" maxlength="11" formControlName="cpf"></ion-input>
           </ion-item>
 
         </ion-col>
@@ -33,8 +33,7 @@
         <ion-col>
           <ion-item class="text-white">
             <ion-label position="floating">Senha :</ion-label>
-      
-            <ion-input placeholder="Digite sua senha"></ion-input>
+            <ion-input placeholder="Digite sua senha" type="password" id="password" name="password" formControlName="password"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -51,7 +50,7 @@
       <ion-row>
         <ion-col>  
           <div class="entrar">
-            <ion-button color="primary" expand="block">Entrar</ion-button>
+            <ion-button color="primary" expand="block" type="submit">Entrar</ion-button>
           </div>
         </ion-col>
 
@@ -84,7 +83,8 @@
             <ion-item>
               <ion-label position="floating">CPF</ion-label>
               <ng-container *ngFor="let error of error_messages.cpf">
-                <span class="error-msg" *ngIf="cadastroForm.get('cpf')?.hasError(error.type) && (cadastroForm.get('cpf')?.dirty || cadastroForm.get('cpf')?.touched)">{{error.message}}</span>
+                <span class="error-msg" *ngIf="cadastroForm.get('cpf')?.hasError(error.type) && (cadastroForm.get('cpf')?.dirty || cadastroForm.get('cpf')?.touched)">
+                  {{error.message}}</span>
               </ng-container> 
               <ion-input id="cpf" name="cpf" type="text" maxlength="11" formControlName="cpf"></ion-input>
             </ion-item>
@@ -126,9 +126,6 @@
           <ng-container *ngFor="let error of error_messages.confirmPassword">
             <ion-label *ngIf="cadastroForm.get('confirmPassword')?.valid">
                 <ion-icon color="success" name="checkmark-circle-outline"></ion-icon>
-            </ion-label>
-            <ion-label *ngIf="cadastroForm.get('confirmPassword')?.hasError('error.type')">
-              <ion-icon color="success" name="checkmark-circle-outline"></ion-icon>
             </ion-label>
           </ng-container>
 
