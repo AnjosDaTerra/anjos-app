@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Usuario } from 'src/app/Core/models/vitima/login.interface';
 import { AlertController } from '@ionic/angular';
+import { MenuController } from '@ionic/angular';
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
@@ -12,6 +13,8 @@ export class HomePage implements OnInit {
     headers: new HttpHeaders({'Content-Type' : 'application/json'})
   };
   nome!: Usuario;
+ 
+    
   
   constructor(private readonly httpClient: HttpClient, private readonly alert: AlertController) { }
    
