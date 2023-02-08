@@ -128,20 +128,20 @@ export class LoginPage implements OnInit {
     //Pega os valores do formulario
      let objCadastro: Usuario = {
        cpf: this.cadastroForm.value['cpf'],
-       senha: this.cadastroForm.value['password'],
+       senha: this.cadastroForm.value['confirmPassword'],
        email: this.cadastroForm.value['email']
      }
     console.log("form",this.cadastroForm.value['cpf']);
     console.log(objCadastro)
 
     //Faz a chamada do endpoint de cadastro
-    // this.httpClient.post<Usuario|string>('http://127.0.0.1:4000/vitima/criar-login',objCadastro,this.httpOptions).subscribe((result) => {
-    //   if(result == "200") {
-    //     this.util.informando('Cadastro realizado com sucesso!', 'success', 'top', 5000);
-    //   } else {
-    //     this.util.informando('CPF já cadastrado!', 'danger', 'top', 5000);
-    //   }
-    // });
+    this.httpClient.post<Usuario|string>('http://127.0.0.1:4000/vitima/criar-login',objCadastro,this.httpOptions).subscribe((result) => {
+      if(result == "200") {
+        this.util.informando('Cadastro realizado com sucesso!', 'success', 'top', 5000);
+      } else {
+        this.util.informando('CPF já cadastrado!', 'danger', 'top', 5000);
+      }
+    });
   }
 
 }
