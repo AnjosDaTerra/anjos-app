@@ -19,7 +19,7 @@ export class LoginPage implements OnInit {
   //Tenho que ver onde vou por esse httpOptions
   httpOptions = {
     headers: new HttpHeaders({'Content-Type' : 'application/json'})
-  } 
+  }
   //---------------------------------
   cadastroForm! : FormGroup
   error_messages = {
@@ -36,7 +36,7 @@ export class LoginPage implements OnInit {
       { type: 'maxlenght', message: '* você excedeu o número de caracteres'},
       { type: 'email',     message: '* por favor, digite um email válido'}
     ],
-    
+
     'password': [
       { type: 'required',  message: '*'},
       { type: 'minlength', message: 'Sua senha tem menos de 4 caracteres'},
@@ -51,17 +51,17 @@ export class LoginPage implements OnInit {
   }
 
   constructor(
-    private readonly httpClient: HttpClient, 
-    private util:UtilidadesService, 
+    private readonly httpClient: HttpClient,
+    private util:UtilidadesService,
     private formBuilder: FormBuilder,
     private menuCtrl: MenuController
-  ) { 
+  ) {
    this.menuCtrl.enable(false, 'main-menu')
   }
 
   ngOnInit() {
     this.cadastroForm = this.formBuilder.group({
-      cpf: ['', 
+      cpf: ['',
         Validators.compose([
         Validators.required,
         Validators.minLength(11),
@@ -82,13 +82,13 @@ export class LoginPage implements OnInit {
       confirmPassword: new FormControl('', Validators.compose([
         Validators.required
       ]))
-    }, 
+    },
     {
       validators: this.mustMatch('password','confirmPassword')
     }
     );
   }
-  
+
   get cadastroFormControl() {
     return this.cadastroForm.controls;
   }
@@ -96,7 +96,7 @@ export class LoginPage implements OnInit {
   togglePasswordFieldType() {
     this.isTextFieldType = !this.isTextFieldType;
   }
-  
+
   //Metodo de comparar senhas
   mustMatch(password: string, confirmPassword: string) {
     return (fg: FormGroup) => {
@@ -114,7 +114,7 @@ export class LoginPage implements OnInit {
       }
     }
   }
-  
+
   public mudarCadastroLogin() {
     this.botaoCL = !this.botaoCL;
     if (this.botaoCL) {
