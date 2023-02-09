@@ -31,7 +31,16 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)
+  },
+  {
+    path: 'pessoal',//cadastro pessoal
+    loadChildren: () => import('./pages/endereco/endereco.module').then(m => m.EnderecoPageModule)
+  },
+  {
+    path: 'residencial', //cadastro endereco
+    loadChildren: () => import('./pages/residencial/residencial.module').then(m => m.ResidencialPageModule)
   }
+
 
 
 
