@@ -162,7 +162,8 @@ export class LoginPage implements OnInit {
     const senha = this.loginForm.value['password'];
     this.httpClient.get<string>(`${this.API}/vitima/check-login/${cpf}/${senha}`).subscribe((result) => {
       if(result == "200") {
-        //fazer a lógica pra para a página home
+        //fazer a lógica pra para a página cadastro pessoal
+        
       } else {
         this.util.informando('Credenciais incorretas', 'danger', 'top', 3000);
       }

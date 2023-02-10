@@ -40,11 +40,6 @@ const routes: Routes = [
     path: 'residencial', //cadastro endereco
     loadChildren: () => import('./pages/residencial/residencial.module').then(m => m.ResidencialPageModule)
   }
-
-
-
-
-
 ];
 
 @NgModule({
