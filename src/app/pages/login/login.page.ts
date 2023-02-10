@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { Usuario } from 'src/app/Core/models/vitima/login.interface';
 import { UtilidadesService } from 'src/app/Core/services/utilidades.service';
@@ -57,7 +58,8 @@ export class LoginPage implements OnInit {
     private httpClient: HttpClient, 
     private util:UtilidadesService, 
     private formBuilder: FormBuilder,
-    private menuCtrl: MenuController
+    private menuCtrl: MenuController,
+    private router: Router
   ) { 
    this.menuCtrl.enable(false, 'main-menu') //DESATIVA O MENU LATERAL
   }
@@ -161,9 +163,10 @@ export class LoginPage implements OnInit {
     const cpf = this.loginForm.value['cpf'];
     const senha = this.loginForm.value['password'];
     this.httpClient.get<string>(`${this.API}/vitima/check-login/${cpf}/${senha}`).subscribe((result) => {
+      console.log(result)
       if(result == "200") {
-        //fazer a lógica pra para a página cadastro pessoal
-        
+        //fazer a lógica para redirecionar à página de cadastro pessoal  
+        this.router.navigate(['/pessoal'])
       } else {
         this.util.informando('Credenciais incorretas', 'danger', 'top', 3000);
       }
