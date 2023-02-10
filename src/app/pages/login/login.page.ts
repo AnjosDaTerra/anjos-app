@@ -20,12 +20,18 @@ export class LoginPage implements OnInit {
   //Tenho que ver onde vou por esse httpOptions e a chamadas http
   httpOptions = {
     headers: new HttpHeaders({'Content-Type' : 'application/json'})
+<<<<<<< HEAD
   } 
   readonly API = 'http://127.0.0.1:4000';
   //--------------------------------------------
   cadastroForm! :FormGroup
   loginForm! :FormGroup
 
+=======
+  }
+  //---------------------------------
+  cadastroForm! : FormGroup
+>>>>>>> feature/perfil
   error_messages = {
     'cpf': [
       { type: 'required',  message: '*'},
@@ -40,7 +46,7 @@ export class LoginPage implements OnInit {
       { type: 'maxlenght', message: '* você excedeu o número de caracteres'},
       { type: 'email',     message: '* por favor, digite um email válido'}
     ],
-    
+
     'password': [
       { type: 'required',  message: '*'},
       { type: 'minlength', message: 'Sua senha tem menos de 4 caracteres'},
@@ -66,7 +72,7 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
     this.cadastroForm = this.formBuilder.group({
-      cpf: ['', 
+      cpf: ['',
         Validators.compose([
         Validators.required,
         Validators.minLength(11),
@@ -87,7 +93,7 @@ export class LoginPage implements OnInit {
       confirmPassword: new FormControl('', Validators.compose([
         Validators.required
       ]))
-    }, 
+    },
     {
       validators: this.mustMatch('password','confirmPassword') //@deprecated
     }
@@ -103,7 +109,7 @@ export class LoginPage implements OnInit {
       ]))
     })
   }
-  
+
   get cadastroFormControl() {
     return this.cadastroForm.controls;
   }
@@ -111,7 +117,7 @@ export class LoginPage implements OnInit {
   togglePasswordFieldType() {
     this.isTextFieldType = !this.isTextFieldType;
   }
-  
+
   //Metodo de comparar senhas
   mustMatch(password: string, confirmPassword: string) {
     return (fg: FormGroup) => {
@@ -129,7 +135,7 @@ export class LoginPage implements OnInit {
       }
     }
   }
-  
+
   public mudarCadastroLogin() {
     this.botaoCL = !this.botaoCL;
     if (this.botaoCL) {

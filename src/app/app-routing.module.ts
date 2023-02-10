@@ -43,6 +43,10 @@ const routes: Routes = [
   {
     path: 'solicitacao',
     loadChildren: () => import('./pages/solicitacao/solicitacao.module').then( m => m.SolicitacaoPageModule)
+  },
+  {
+    path: 'perfil',
+    loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)
   }
 ];
 
