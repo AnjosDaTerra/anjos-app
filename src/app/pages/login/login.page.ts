@@ -165,12 +165,11 @@ export class LoginPage implements OnInit {
     this.httpClient.get<string>(`${this.API}/vitima/check-login/${cpf}/${senha}`).subscribe((result) => {
       console.log(result)
       if(result == "200") {
-        //fazer a lógica para redirecionar à página de cadastro pessoal  
+        //redireciona para a pagina pessoal.  
         this.router.navigate(['/pessoal'])
       } else {
         this.util.informando('Credenciais incorretas', 'danger', 'top', 3000);
-      }
-      
+      }      
     })
   }
 

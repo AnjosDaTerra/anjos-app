@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DadosPessoais } from 'src/app/Core/models/vitima/vitima-pessoal.interface';
 
 @Component({
@@ -15,6 +15,8 @@ export class EnderecoPage implements OnInit {
   readonly API = 'http://127.0.0.1:4000';
 
   form!: FormGroup
+  cpf_value: string = "1235wewqwqw7";
+  email_value!: string;
   option_sexo : any = [
     {
       name: "Masculino",  
@@ -40,6 +42,7 @@ export class EnderecoPage implements OnInit {
       value: 2
     }
   ]
+
   constructor(
     private httpClient: HttpClient,
     private formBuilder: FormBuilder
@@ -49,13 +52,17 @@ export class EnderecoPage implements OnInit {
     this.form = this.formBuilder.group({
       nome: [''],
       sobrenome: [''],
-      cpf: [''],
+      cpf: [''], //set value from database
       idade: [''],
-      email: [''],
+      email: [''], //set value from database
       telefone: [''],
       sexo: [''],
       estado_civil: ['']      
     })
+  }
+  setInputValue() {
+    this.form.controls['cpf'].setValue('1234 TESTE');
+    this.form.controls['email'].setValue('yuri@hotmail.com');
   }
 
   pegarSexo(ev: any) {
