@@ -39,7 +39,12 @@ const routes: Routes = [
   {
     path: 'residencial', //cadastro endereco
     loadChildren: () => import('./pages/residencial/residencial.module').then(m => m.ResidencialPageModule)
+  },
+  {
+    path: 'solicitacao',
+    loadChildren: () => import('./pages/solicitacao/solicitacao.module').then( m => m.SolicitacaoPageModule)
   }
+
 
 
 

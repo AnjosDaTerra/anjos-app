@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="imagem-logo">
+    <br>
+    <img src="../../../assets/anjos_da_terra.png" width="60%" alt="">
+  </div>
+  <div class="cadastro3">
+    <div class="left-3"></div>
+    <div class="center-3">
+      <h1>Solitação do Formulário</h1>
+    </div>
+  </div>
+
+  <ion-grid>
+
+    <ion-row>
+      <ion-col>
+        <ion-item class="text-white">         
+          <ion-label position="floating">Quantas pessoas estão com você?</ion-label>
+          <ion-input placeholder="Quantos pessoas estão com você?" id="quantidade" name="quantidade"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <div class="cadastro3">
+          <div class="left-4"></div>
+          <div class="center-3">
+            <h5>Opções de ajuda:</h5>
+          </div>
+        </div>
+        <ion-list>
+          <ion-item *ngFor="let ingredient of ingredients">
+            <ion-label>{{ingredient.name}}</ion-label>
+            <ion-checkbox slot="end" [(ngModel)]="ingredient.isChecked"></ion-checkbox>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <ion-item>
+            <ion-label>Outro tipo de ajuda:</ion-label>
+            <ion-textarea placeholder="Escreva com que deseja ajudar"></ion-textarea>
+          </ion-item>
+         
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <div class="entrar">
+          <ion-button color="primary" expand="block">Registrar</ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
