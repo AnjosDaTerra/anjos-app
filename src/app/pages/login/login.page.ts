@@ -20,18 +20,12 @@ export class LoginPage implements OnInit {
   //Tenho que ver onde vou por esse httpOptions e a chamadas http
   httpOptions = {
     headers: new HttpHeaders({'Content-Type' : 'application/json'})
-<<<<<<< HEAD
   } 
   readonly API = 'http://127.0.0.1:4000';
   //--------------------------------------------
   cadastroForm! :FormGroup
   loginForm! :FormGroup
 
-=======
-  }
-  //---------------------------------
-  cadastroForm! : FormGroup
->>>>>>> feature/perfil
   error_messages = {
     'cpf': [
       { type: 'required',  message: '*'},
