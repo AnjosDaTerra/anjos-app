@@ -54,12 +54,12 @@ export class LoginPage implements OnInit {
   }
 
   constructor(
-    private readonly httpClient: HttpClient, 
+    private httpClient: HttpClient, 
     private util:UtilidadesService, 
     private formBuilder: FormBuilder,
     private menuCtrl: MenuController
   ) { 
-   this.menuCtrl.enable(false, 'main-menu')
+   this.menuCtrl.enable(false, 'main-menu') //DESATIVA O MENU LATERAL
   }
 
   ngOnInit() {
