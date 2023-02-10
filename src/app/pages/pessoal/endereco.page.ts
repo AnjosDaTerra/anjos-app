@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Usuario } from 'src/app/Core/models/vitima/login.interface';
 import { DadosPessoais } from 'src/app/Core/models/vitima/vitima-pessoal.interface';
 
 @Component({
@@ -15,8 +16,6 @@ export class EnderecoPage implements OnInit {
   readonly API = 'http://127.0.0.1:4000';
 
   form!: FormGroup
-  cpf_value: string = "1235wewqwqw7";
-  email_value!: string;
   option_sexo : any = [
     {
       name: "Masculino",  
@@ -59,8 +58,11 @@ export class EnderecoPage implements OnInit {
       sexo: [''],
       estado_civil: ['']      
     })
+    this.setInputValue()
   }
+  
   setInputValue() {
+    this.httpClient.get<Usuario>(`${this.API}`)
     this.form.controls['cpf'].setValue('1234 TESTE');
     this.form.controls['email'].setValue('yuri@hotmail.com');
   }
