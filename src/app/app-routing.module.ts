@@ -22,7 +22,7 @@ const routes: Routes = [
   },
   {
     path: 'botao',
-    loadChildren: () => import('./botao/botao.module').then(m => m.BotaoPageModule)
+    loadChildren: () => import('./Core/botao/botao.module').then(m => m.BotaoPageModule)
   },
   {
     path: 'footer',
@@ -48,6 +48,7 @@ const routes: Routes = [
     path: 'perfil',
     loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)
   }
+
 ];
 
 @NgModule({

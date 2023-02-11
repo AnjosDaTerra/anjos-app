@@ -166,7 +166,8 @@ export class LoginPage implements OnInit {
       console.log(result)
       if(result == "200") {
         //redireciona para a pagina pessoal.  
-        this.router.navigate(['/pessoal'])
+        //{queryParams:{order:’popular’,’price-range’:’expensive’’}}
+        this.router.navigate(['/pessoal'], {queryParams:{cpf:`${cpf}`}});
       } else {
         this.util.informando('Credenciais incorretas', 'danger', 'top', 3000);
       }      

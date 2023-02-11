@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { Usuario } from 'src/app/Core/models/vitima/login.interface';
 import { DadosPessoais } from 'src/app/Core/models/vitima/vitima-pessoal.interface';
 
@@ -14,7 +15,7 @@ export class EnderecoPage implements OnInit {
     headers: new HttpHeaders({'Content-Type' : 'application/json'})
   }
   readonly API = 'http://127.0.0.1:4000';
-
+  cpf!: string;
   form!: FormGroup
   option_sexo : any = [
     {
@@ -44,10 +45,12 @@ export class EnderecoPage implements OnInit {
 
   constructor(
     private httpClient: HttpClient,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
+    this.getParamsValue()
     this.form = this.formBuilder.group({
       nome: [''],
       sobrenome: [''],
@@ -61,10 +64,20 @@ export class EnderecoPage implements OnInit {
     this.setInputValue()
   }
   
+  async getParamsValue(): Promise<string> {
+    this.route.queryParams.subscribe(params => {
+      this.cpf = params.cpf;
+    })
+    return this.cpf;
+  }
+  
   setInputValue() {
-    this.httpClient.get<Usuario>(`${this.API}`)
-    this.form.controls['cpf'].setValue('1234 TESTE');
-    this.form.controls['email'].setValue('yuri@hotmail.com');
+    this.httpClient.get<Usuario>(`${this.API}/vitima/usuarios?cpf=${this.cpf}`).subscribe(result => {
+      this.form.controls['cpf'].setValue(result.cpf);
+      this.form.controls['email'].setValue(result.email);  
+      console.log(this.cpf)
+    })
+    
   }
 
   pegarSexo(ev: any) {

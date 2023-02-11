@@ -1,0 +1,42 @@
+
+  <ion-toolbar>
+    <!-- <div class="botao">
+      <div>
+        <ion-button color="primary" (click)="abrirPagina('quemsomos/quemsomos')"> 
+          <i class="material-icons">add</i>
+        </ion-button>
+      </div>
+      <div>
+        
+        <ion-button color="primary" (click)="abrirPagina('home')"> 
+          <i class="material-icons">home</i>
+        </ion-button>
+      </div>
+      <div>
+        <ion-button color="primary" (click)="abrirPagina('carrinho')"> 
+          <i class="material-icons">shopping_cart</i>
+        </ion-button>
+      </div>      
+    </div> -->
+   
+      <ion-tab-bar tab="bottom">
+        <ion-tab-button tab="schedule" (click)="abrirPagina('solicitacao')">
+          <ion-icon name="hourglass"></ion-icon>
+          <ion-label>Solicitar ajuda</ion-label>
+          <ion-badge>2</ion-badge>
+        </ion-tab-button>
+    
+        <ion-tab-button tab="speakers"  (click)="abrirPagina('home')">
+          <ion-icon name="home"></ion-icon>
+          <ion-label>Home</ion-label>
+        </ion-tab-button>
+    
+        <ion-tab-button tab="map" (click)="abrirPagina('carrinho')">
+          <ion-icon name="map"></ion-icon>
+          <ion-label>Local de Busca</ion-label>
+        </ion-tab-button>
+      </ion-tab-bar>
+  
+  </ion-toolbar>
+
+
