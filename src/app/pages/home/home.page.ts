@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Usuario } from 'src/app/Core/models/vitima/login.interface';
-import { AlertController } from '@ionic/angular';
+import { AlertController} from '@ionic/angular';
 import { MenuController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 @Component({
@@ -25,7 +25,28 @@ export class HomePage implements OnInit {
    
   ngOnInit() {
     this.getParamsValue()
+    //esse reloadOnce serve pra não bugar o side menu logo depois do login.
+    this.reloadOnce()
   }
+  reloadOnce() {
+    if (window.localStorage) {
+  
+      // If there is no item as 'reload'
+      // in localstorage then create one &
+      // reload the page
+      if (!localStorage.getItem('reload')) {
+          localStorage['reload'] = true;
+          window.location.reload();
+      } else {
+
+          // If there exists a 'reload' item
+          // then clear the 'reload' item in
+          // local storage
+          localStorage.removeItem('reload');  
+      }
+    }
+  }
+
   public async sayHello() : Promise<Usuario> {
     this.httpClient.get<Usuario>('http://127.0.0.1:4000/vitima/usuarios').subscribe(resultado => {
       this.nome = resultado;
@@ -40,5 +61,6 @@ export class HomePage implements OnInit {
     console.log(this.cpf)
     return this.cpf;
   }
+ 
   
 }

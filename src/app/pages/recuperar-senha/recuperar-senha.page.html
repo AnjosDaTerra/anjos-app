@@ -6,15 +6,14 @@
 
 
 
-<ion-grid>
+<ion-grid *ngIf="botaoNome=='Enviar'">
  
   <div class="container">
     <div>
-      <p class="texto">Por favor, insira no campo abaixo o email vinculado ao seu cpf: yu***@hotmail.com</p>
+      <p class="texto">Por favor, insira no campo abaixo o email vinculado ao seu cpf</p>
     </div>
   </div>
-  
-    
+   
   <form [formGroup]="formEmail" (ngSubmit)="enviarCodigo()">
     <ion-row>
 
@@ -32,11 +31,50 @@
 
     <ion-row size="12"  class="ion-text-center">
       <ion-col>
-        <ion-button type="submit"  [disabled]="!formEmail.valid">Enviar</ion-button>
+        <ion-button type="submit"  [disabled]="buttonDisabled" >{{botaoNome}}</ion-button>
       </ion-col>
     </ion-row>
     
   </form>
 </ion-grid>
 
+<!--CONFIRMAR CODIGO-->
+<ion-grid *ngIf="botaoNome=='Confirmar'">
+  
+  <div class="container">
+    <div>
+      <p class="texto">Digite no campo abaixo o codigo recebido por email:</p>
+    </div>
+  </div>
+   
+  <form [formGroup]="formConfirma" (ngSubmit)="confirmarCodigo()">
+    <ion-row>
+
+      <ion-col>
+        <ion-item class="text-white">
+
+          <ion-label>Codigo:</ion-label>
+          <ion-input type="text" id="codigo" name="codigo" formControlName="codigo">
+         </ion-input>
+      
+        </ion-item>
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row size="12"  class="ion-text-center">
+      <ion-col>
+        <ion-button type="submit"  [disabled]="buttonDisabled" >{{botaoNome}}</ion-button>
+      </ion-col>
+    </ion-row>
+    
+  </form>
+</ion-grid>
+
+<!--TROCAR SENHA-->
+<ion-grid>
+  <form [formGroup]="formConfirma" (ngSubmit)="mudarSenha()">
+    
+  </form>
+</ion-grid>
 
