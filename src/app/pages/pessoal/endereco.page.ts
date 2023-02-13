@@ -1,6 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Usuario } from 'src/app/Core/models/vitima/login.interface';
 import { DadosPessoais } from 'src/app/Core/models/vitima/vitima-pessoal.interface';
 
 @Component({
@@ -13,10 +15,8 @@ export class EnderecoPage implements OnInit {
     headers: new HttpHeaders({'Content-Type' : 'application/json'})
   }
   readonly API = 'http://127.0.0.1:4000';
-
+  cpf!: string;
   form!: FormGroup
-  cpf_value: string = "1235wewqwqw7";
-  email_value!: string;
   option_sexo : any = [
     {
       name: "Masculino",  
@@ -45,10 +45,13 @@ export class EnderecoPage implements OnInit {
 
   constructor(
     private httpClient: HttpClient,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit() {
+    this.getParamsValue()
     this.form = this.formBuilder.group({
       nome: [''],
       sobrenome: [''],
@@ -59,10 +62,22 @@ export class EnderecoPage implements OnInit {
       sexo: [''],
       estado_civil: ['']      
     })
+    this.setInputValue()
   }
+  
+  async getParamsValue(): Promise<string> {
+    this.route.queryParams.subscribe(params => {
+      this.cpf = params.cpf;
+    })
+    return this.cpf;
+  }
+  //Aqui estou pegando os valores do documento vitima
   setInputValue() {
-    this.form.controls['cpf'].setValue('1234 TESTE');
-    this.form.controls['email'].setValue('yuri@hotmail.com');
+    this.httpClient.get<Usuario>(`${this.API}/vitima/usuarios?cpf=${this.cpf}`).subscribe(result => {
+      this.form.controls['cpf'].setValue(result.cpf);
+      this.form.controls['email'].setValue(result.email);  
+    })
+    
   }
 
   pegarSexo(ev: any) {
@@ -83,9 +98,10 @@ export class EnderecoPage implements OnInit {
       sexo: this.form.value['sexo'],
       estadoCivil: this.form.value['estado_civil']
     }
-    console.log('Primeiro console'+objPessoalData);
-    this.httpClient.post<DadosPessoais>(`${this.API}/vitima/criar-dados-pessoal?cpf=${objPessoalData.cpf}`, objPessoalData,this.httpOptions).subscribe((result) => {
-      console.log(result);//fazer tratamento de erro e criar uma lógica para a próxima página.
-    })
+    this.httpClient.post<DadosPessoais|string>(`${this.API}/vitima/criar-dados-pessoal?cpf=${objPessoalData.cpf}`, objPessoalData,this.httpOptions).subscribe((result) => {
+      if(result == '200') {
+        this.router.navigate([`/home`], {queryParams:{cpf:`${objPessoalData.cpf }`}}) 
+      }
+    })  
   }
 }

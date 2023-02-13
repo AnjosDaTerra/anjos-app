@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { FooterPageRoutingModule } from './footer-routing.module';
 
 import { FooterPage } from './footer.page';
-import { BotaoPageModule } from 'src/app/botao/botao.module';
+import { BotaoPageModule } from 'src/app/Core/botao/botao.module';
 
 @NgModule({
   imports: [

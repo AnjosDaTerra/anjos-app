@@ -1,0 +1,14 @@
+.container {
+  margin-top: 10%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 100px;
+}
+.texto {
+  text-align:center;
+}
+.container > div {
+  margin:0px;
+  padding: 10%;
+}
