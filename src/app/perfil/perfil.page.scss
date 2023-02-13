@@ -1,6 +1,6 @@
 .user_div {
   padding: 40px;
-  width: 400px;
+  width: 100%;
   height: 260px;
   background: linear-gradient(to right, #4e91ef, #d5a168);
   display: flex;
@@ -10,7 +10,7 @@
   .first_div {
     padding-top: 70px;
     .username {
-      font-size: 18px;
+      font-size: 16px;
       color: white;
       font-weight: 600;
     }
@@ -23,11 +23,12 @@
     background-size: cover;
     background-repeat: no-repeat;
     border-radius: 7px;
+    margin-left: 10px;
   }
 }
 .content_div{
 background: white;
-width: 400px;
+width: 100%;
 border-top-left-radius: 75px;
 margin-top: -90px;
 padding: 20px;

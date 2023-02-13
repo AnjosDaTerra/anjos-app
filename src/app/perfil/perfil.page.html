@@ -10,9 +10,9 @@
 
   <div class="user_div">
     <div class="first_div">
-      <ion-label class="username">Nome</ion-label>
+      <ion-label class="username">Yuri Conder</ion-label>
       <br>
-      <ion-label class="username">CPF</ion-label>
+      <ion-label class="username">154789854785</ion-label>
     </div>
     <div class="user_back" [style.backgroundImage]="''"></div>
   </div>
@@ -27,7 +27,7 @@
 
               </div>
                 <div class="designer">
-                  <ion-label class="bold_lbl">Algo aqui</ion-label>
+                  <ion-label class="bold_lbl"></ion-label>
                   <ion-label class="samll_lbl"></ion-label>
                 </div>
             </div>
@@ -35,5 +35,14 @@
         </ion-row>
       </ion-grid>
     </div>
+    <!--ACTION SHEET-->
+    <ion-button expand="block" (click)="editarOpcoes()">EDITAR</ion-button>
+    <ion-button expand="block" color="danger">Sair</ion-button>
   </div>
 </ion-content>
+<!--gambiara o footer do shared module não está funcionando aqui, não sei o porquê-->
+<ion-footer color="dark" slot="bottom" >
+  <app-botao></app-botao>
+</ion-footer>
+
+
