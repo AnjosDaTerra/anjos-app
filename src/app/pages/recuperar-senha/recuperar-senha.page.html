@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Recuperação de senha</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-grid>
+ 
+  <div class="container">
+    <div>
+      <p class="texto">Por favor, insira no campo abaixo o email vinculado ao seu cpf: yu***@hotmail.com</p>
+    </div>
+  </div>
+  
+    
+  <form [formGroup]="formEmail" (ngSubmit)="enviarCodigo()">
+    <ion-row>
+
+      <ion-col>
+        <ion-item class="text-white">
+
+          <ion-label>Email:</ion-label>
+          <ion-input type="email" id="email" name="email" formControlName="email">
+         </ion-input>
+      
+        </ion-item>
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row size="12"  class="ion-text-center">
+      <ion-col>
+        <ion-button type="submit"  [disabled]="!formEmail.valid">Enviar</ion-button>
+      </ion-col>
+    </ion-row>
+    
+  </form>
+</ion-grid>
+
+

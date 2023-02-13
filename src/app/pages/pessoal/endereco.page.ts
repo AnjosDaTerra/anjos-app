@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Usuario } from 'src/app/Core/models/vitima/login.interface';
 import { DadosPessoais } from 'src/app/Core/models/vitima/vitima-pessoal.interface';
 
@@ -46,7 +46,8 @@ export class EnderecoPage implements OnInit {
   constructor(
     private httpClient: HttpClient,
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -70,12 +71,11 @@ export class EnderecoPage implements OnInit {
     })
     return this.cpf;
   }
-  
+  //Aqui estou pegando os valores do documento vitima
   setInputValue() {
     this.httpClient.get<Usuario>(`${this.API}/vitima/usuarios?cpf=${this.cpf}`).subscribe(result => {
       this.form.controls['cpf'].setValue(result.cpf);
       this.form.controls['email'].setValue(result.email);  
-      console.log(this.cpf)
     })
     
   }
@@ -98,9 +98,10 @@ export class EnderecoPage implements OnInit {
       sexo: this.form.value['sexo'],
       estadoCivil: this.form.value['estado_civil']
     }
-    console.log('Primeiro console'+objPessoalData);
-    this.httpClient.post<DadosPessoais>(`${this.API}/vitima/criar-dados-pessoal?cpf=${objPessoalData.cpf}`, objPessoalData,this.httpOptions).subscribe((result) => {
-      console.log(result);//fazer tratamento de erro e criar uma lógica para a próxima página.
-    })
+    this.httpClient.post<DadosPessoais|string>(`${this.API}/vitima/criar-dados-pessoal?cpf=${objPessoalData.cpf}`, objPessoalData,this.httpOptions).subscribe((result) => {
+      if(result == '200') {
+        this.router.navigate([`/home`], {queryParams:{cpf:`${objPessoalData.cpf }`}}) 
+      }
+    })  
   }
 }
