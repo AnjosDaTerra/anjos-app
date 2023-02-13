@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { UtilidadesService } from 'src/app/Core/services/utilidades.service';
@@ -33,13 +33,27 @@ readonly API = 'http://127.0.0.1:4000';
   formEmail! : FormGroup;
   formConfirma! : FormGroup;
   formNewPassword! : FormGroup;
+
   buttonDisabled!: boolean;
+  isTextFieldType: boolean | undefined;
+
   clickCount: number = 0;
-
   codigoGerado!: string;
-
   botaoNome: string= 'Enviar';
   
+  error_messages = {
+    'password': [
+      { type: 'required',  message: '*'},
+      { type: 'minlength', message: 'Sua senha tem menos de 4 caracteres'},
+      { type: 'maxlenght', message: 'Sua senha passou do tamanho permetido'},
+
+    ],
+
+    'confirmPassword': [
+      { type: 'required',  message: 'Campo obrigatório'},
+      { type: 'Mustmatch', message: 'errado'}
+    ]
+  }
 
   ngOnInit() {
     this.buttonDisabled = false;
@@ -65,9 +79,25 @@ readonly API = 'http://127.0.0.1:4000';
     });
 
     this.formNewPassword = this.formBuilder.group({
-
-    })
+      password: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.minLength(4),
+        Validators.maxLength(30)
+      ])),
+      confirmPassword: new FormControl('', Validators.compose([
+        Validators.required
+      ])),  
+    },
+    {
+      validators: this.mustMatch('password','confirmPassword') //@deprecated
+    });
+    
   }
+
+  togglePasswordFieldType() {
+    this.isTextFieldType = !this.isTextFieldType;
+  }
+
   //Desativa o botão depois de x clicks
   private desativarBotao(limite: number) {
     if(this.clickCount > limite) {
@@ -75,6 +105,25 @@ readonly API = 'http://127.0.0.1:4000';
           this.buttonDisabled = true;
         }, 2000);
       }
+  }
+
+  
+   //Metodo de comparar senhas
+   mustMatch(password: string, confirmPassword: string) {
+    return (fg: FormGroup) => {
+      const passwordControl = fg.controls[password];
+      const confirmPasswordControl = fg.controls[confirmPassword];
+
+      if(confirmPasswordControl.errors && !confirmPasswordControl.errors['Mustmatch']) {
+        return;
+      }
+
+      if(passwordControl.value !== confirmPasswordControl.value) {
+        confirmPasswordControl.setErrors({Mustmatch: true});
+      } else {
+        confirmPasswordControl.setErrors(null);
+      }
+    }
   }
 
   enviarCodigo() {
@@ -125,7 +174,7 @@ readonly API = 'http://127.0.0.1:4000';
   }
 
   mudarSenha() {
-    
+
   }
   
 
