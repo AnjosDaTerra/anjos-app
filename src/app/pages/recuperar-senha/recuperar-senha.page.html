@@ -79,6 +79,7 @@
     <p class="texto">Digite nos campos abaixo a sua nova senha:</p>
   </div>
 
+  <!--MUDAR SENHA-->
   <form [formGroup]="formNewPassword" (ngSubmit)="mudarSenha()">
     <ion-row>
       <ion-col>
@@ -91,11 +92,11 @@
           <ion-label *ngIf="formNewPassword.get('password')?.valid"><ion-icon color="success" name="checkmark-circle-outline"></ion-icon></ion-label>
         </ng-container>
         
-        <button (click)="togglePasswordFieldType()">
+        <!-- <button (click)="togglePasswordFieldType()"> -->
        
-          <ion-icon [name]="isTextFieldType ? 'eye' : 'eye-off'">
-          </ion-icon>
-        </button>
+          <!-- <ion-icon [name]="isTextFieldType ? 'eye' : 'eye-off'">
+          </ion-icon> -->
+        <!-- </button> -->
       </ion-item>
   
       <ion-item>
@@ -107,11 +108,11 @@
           </ion-label>
         </ng-container>
 
-        <button (click)="togglePasswordFieldType()">
+        <!-- <button (click)="togglePasswordFieldType()"> -->
 
-          <ion-icon [name]="isTextFieldType ? 'eye' : 'eye-off'">
-          </ion-icon>
-        </button>
+          <!-- <ion-icon [name]="isTextFieldType ? 'eye' : 'eye-off'">
+          </ion-icon> -->
+        <!-- </button> -->
       </ion-item>
 
       </ion-col>
@@ -119,7 +120,7 @@
 
     <ion-row size="12"  class="ion-text-center">
       <ion-col>
-        <ion-button type="submit"  [disabled]="buttonDisabled" >{{botaoNome}}</ion-button>
+        <ion-button type="submit"  [disabled]="!formNewPassword.valid" >{{botaoNome}}</ion-button>
       </ion-col>
     </ion-row>
     

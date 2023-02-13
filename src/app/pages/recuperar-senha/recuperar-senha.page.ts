@@ -6,6 +6,7 @@ import { MenuController } from '@ionic/angular';
 import { UtilidadesService } from 'src/app/Core/services/utilidades.service';
 import { customAlphabet } from 'nanoid'
 import { MsgRequest } from 'src/app/Core/models/email-recovery.interface';
+import { Usuario } from 'src/app/Core/models/vitima/login.interface';
 
 @Component({
   selector: 'app-recuperar-senha',
@@ -94,9 +95,9 @@ readonly API = 'http://127.0.0.1:4000';
     
   }
 
-  togglePasswordFieldType() {
-    this.isTextFieldType = !this.isTextFieldType;
-  }
+  // togglePasswordFieldType() {
+  //   this.isTextFieldType = !this.isTextFieldType;
+  // }
 
   //Desativa o botão depois de x clicks
   private desativarBotao(limite: number) {
@@ -146,6 +147,10 @@ readonly API = 'http://127.0.0.1:4000';
           }
           //armarzenar o nanoid()
           this.codigoGerado = generatedNumber;
+          //apagar depois
+
+          console.log(generatedNumber)
+          
           //criar um endpoint pra enviar o numero aleatorio
           this.httpClient.post<MsgRequest>(`http://127.0.0.1:4000/email/enviar`, objEmail, this.httpOptions).subscribe()
           this.util.informando('O código de recuperação foi enviado para o seu email', 'success', 'top', 3000);
@@ -166,16 +171,31 @@ readonly API = 'http://127.0.0.1:4000';
     const codigo = this.formConfirma.value['codigo'];
     if(codigo == this.codigoGerado) {
       this.util.informando('Código confirmado com sucesso!', 'success', 'top', 3000);
-      this.botaoNome = "Trocar senha"
+      this.botaoNome = "Trocar senha"      
     } else {
       this.util.informando('Codigo incorreto', 'danger', 'top', 3000);
-    }
+    };
    
   }
 
   mudarSenha() {
+    const email = this.formEmail.value['email'];
+    const senha1: string = this.formNewPassword.value['password']
+    const senha2: string = this.formNewPassword.value['confirmPassword']
 
+    const obj = { 'senha': senha2 };
+    if(senha1.length > 3 && senha1 === senha2) {
+      this.httpClient.put<Usuario | string>(`${this.API}/vitima/update?email=${email}`,obj ,this.httpOptions).subscribe((resultado) => {
+        if (resultado == '200') {
+          this.util.informando('A sua senha foi alterada com sucesso!', 'success', 'top', 2000);
+          this.router.navigate(['/login'])
+        } else {
+          this.util.informando('Ops! ocorreu algum erro, tente novamente', 'danger', 'middle', 3000);
+        }
+      });
+    } else {
+      this.util.informando('A senha deve ter mais de 4 caracteres', 'warning', 'middle', 3000);
+    }
   }
   
-
 }
