@@ -1,15 +1,28 @@
 .imagem-logo {
   text-align: center;
 }
+.imagem-logo h1{
+  text-align: center;
+}
 .titulo {
   text-align: center;
+  letter-spacing: -1px;
 }
-.first_card {
+.first_card-{
+  text-align: justify;
+  line-height: 1.5;
+  letter-spacing: -1px; /* propriedade css que específica o comportamento do espaçamento entre os caracteres de texto*/
+  width: 90%;
+  background: linear-gradient(to right, transparent, #b7d5e5
+  )
+
+}
+.first_card- h1{
   text-align: center;
+  letter-spacing: -1px;
+
 }
-.first_card p {
-  text-align: center;
-}
+
 .secound_card {
   text-align: center;
 }
