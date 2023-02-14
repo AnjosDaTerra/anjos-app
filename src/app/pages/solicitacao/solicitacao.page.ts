@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SolicitacaoAjuda } from 'src/app/Core/models/vitima/requerimento-ajuda';
 import { UtilidadesService } from 'src/app/Core/services/utilidades.service';
 
@@ -18,7 +19,7 @@ export class SolicitacaoPage implements OnInit {
   readonly API = 'http://127.0.0.1:4000';
   //--------------------------------------------
  
-
+  rotaStore: any
   solitForm! :FormGroup;
   ingredients = [
   
@@ -30,12 +31,18 @@ export class SolicitacaoPage implements OnInit {
 ]
 
   constructor( 
-    private formBuilder: FormBuilder,
-    private httpCliente: HttpClient,
-    private util:UtilidadesService
+      private formBuilder: FormBuilder,
+      private httpCliente: HttpClient,
+      private util:UtilidadesService,
+      private route: ActivatedRoute,
+      private routeId: Router
     ) { }
 
   ngOnInit() {
+
+    this.route = this.route.snapshot.params['id'];
+    this.rotaStore = this.route
+
     this.solitForm = this.formBuilder.group({
       qtde: ['', Validators.required],
       helpText: ['', Validators.required]
@@ -68,7 +75,7 @@ export class SolicitacaoPage implements OnInit {
       outros: helpText
     }
     try {
-      this.httpCliente.post<SolicitacaoAjuda | string>(`${this.API}/vitima/criar-dados-ajudame?cpf=17574229783`, objRequerimento, this.httpOptions).subscribe(resultado => {
+      this.httpCliente.post<SolicitacaoAjuda | string>(`${this.API}/vitima/criar-dados-ajudame?cpf=${this.rotaStore}`, objRequerimento, this.httpOptions).subscribe(resultado => {
         if (resultado == '200') {
           this.util.informando('Solicitação realizada com sucesso, aguarde a verificação do administrador até 7 dias','success', 'top', 7000);
         }

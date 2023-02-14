@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ActionSheetController, AlertController } from '@ionic/angular';
 
 @Component({
@@ -8,15 +8,19 @@ import { ActionSheetController, AlertController } from '@ionic/angular';
   styleUrls: ['./perfil.page.scss'],
 })
 export class PerfilPage implements OnInit {
-  routerId = null;
+  
+  rotaStore: any
   constructor(
     public actionSheetController: ActionSheetController,
     private alertCtrl: AlertController, 
     private route: ActivatedRoute, 
+    private routeId: Router,
     ) { }
 
   ngOnInit() {
-    this.routerId = this.route.snapshot.params['cpf'];
+    this.routeId = this.route.snapshot.params['id'];
+    this.rotaStore = this.routeId
+    console.log(this.rotaStore)
   }
   //escolher qual eu vou editar.
   async editarOpcoes() {

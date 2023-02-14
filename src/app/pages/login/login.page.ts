@@ -170,7 +170,7 @@ export class LoginPage implements OnInit {
       if(result == "200") {
         if(this.temCadastro) {
           //vou passar os dados pra outra pagina
-         this.router.navigate([`/home`])
+         this.router.navigate([`/home/${cpf}`])
         } else {
           this.router.navigate(['/pessoal'], {queryParams:{cpf:`${cpf}`}})
         }
