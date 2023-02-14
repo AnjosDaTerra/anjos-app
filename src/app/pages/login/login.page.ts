@@ -4,9 +4,7 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { Usuario } from 'src/app/Core/models/vitima/login.interface';
-import { DadosPessoais } from 'src/app/Core/models/vitima/vitima-pessoal.interface';
 import { UtilidadesService } from 'src/app/Core/services/utilidades.service';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -55,15 +53,17 @@ export class LoginPage implements OnInit {
       { type: 'Mustmatch', message: 'errado'}
     ]
   }
+ //VENDO COMO FUNCIONA
+  message:string=""; //E ESSE AQUI RECEBE
 
   constructor(
     private httpClient: HttpClient, 
     private util:UtilidadesService, 
     private formBuilder: FormBuilder,
     private menuCtrl: MenuController,
-    private router: Router
+    private router: Router,
   ) { 
-   this.menuCtrl.enable(false, 'main-menu') //DESATIVA O MENU LATERAL
+   this.menuCtrl.enable(false, 'main-menu') //Desativa o menu lateral.
   }
 
   ngOnInit() {
@@ -169,7 +169,8 @@ export class LoginPage implements OnInit {
     this.httpClient.get<string>(`${this.API}/vitima/check-login/${cpf}/${senha}`).subscribe((result) => {
       if(result == "200") {
         if(this.temCadastro) {
-         this.router.navigate([`/home/${cpf}`])
+          //vou passar os dados pra outra pagina
+         this.router.navigate([`/home`])
         } else {
           this.router.navigate(['/pessoal'], {queryParams:{cpf:`${cpf}`}})
         }
@@ -185,6 +186,5 @@ export class LoginPage implements OnInit {
       this.temCadastro = valor;
       console.log(`depois da atribuicao`+this.temCadastro)
     })
-  }
-
+  } 
 }
