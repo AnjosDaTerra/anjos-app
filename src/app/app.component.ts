@@ -5,8 +5,8 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  public appPages = [
-    { title: 'Meu perfil', url: '/perfil', icon: 'person' },
+  public appPages = [//como q eu vou passar o cpf para o meu perfil.
+    { title: 'Meu perfil', url: '/perfil', id:'17574229783', icon: 'person' },
     { title: 'Quem somos', url: '/quemsomos/quemsomos', icon: 'people' },
     
     

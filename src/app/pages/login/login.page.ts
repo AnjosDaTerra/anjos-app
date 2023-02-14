@@ -169,7 +169,7 @@ export class LoginPage implements OnInit {
     this.httpClient.get<string>(`${this.API}/vitima/check-login/${cpf}/${senha}`).subscribe((result) => {
       if(result == "200") {
         if(this.temCadastro) {
-         this.router.navigate([`/home`], {queryParams:{cpf:`${cpf}`}}) 
+         this.router.navigate([`/home/${cpf}`])
         } else {
           this.router.navigate(['/pessoal'], {queryParams:{cpf:`${cpf}`}})
         }

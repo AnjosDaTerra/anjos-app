@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ActionSheetController, AlertController } from '@ionic/angular';
 
 @Component({
@@ -7,13 +8,15 @@ import { ActionSheetController, AlertController } from '@ionic/angular';
   styleUrls: ['./perfil.page.scss'],
 })
 export class PerfilPage implements OnInit {
-
+  routerId = null;
   constructor(
     public actionSheetController: ActionSheetController,
     private alertCtrl: AlertController, 
+    private route: ActivatedRoute, 
     ) { }
 
   ngOnInit() {
+    this.routerId = this.route.snapshot.params['cpf'];
   }
   //escolher qual eu vou editar.
   async editarOpcoes() {

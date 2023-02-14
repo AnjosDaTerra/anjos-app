@@ -7,13 +7,13 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./botao.page.scss'],
 })
 export class BotaoPage implements OnInit {
-
+  id ='12334'
   constructor(public nav: NavController) { }
 
   ngOnInit() {
   }
 
   abrirPagina(pagina: string) {
-    this.nav.navigateForward(pagina)
+    this.nav.navigateForward(`${pagina}/${this.id}`)
   }
 }
