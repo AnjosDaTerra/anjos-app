@@ -28,7 +28,7 @@ export class PerfilPage implements OnInit {
     private alertCtrl: AlertController, 
     private route: ActivatedRoute, 
     private routeId: Router,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
     ) { }
 
   ngOnInit() {
@@ -61,13 +61,13 @@ export class PerfilPage implements OnInit {
             this.editarCadastro();
           },
         },
-        {
-          text: 'Residencial',
-          icon: 'home',
-          handler: () => {
-            console.log('Share clicked');
-          },
-        },
+        // {
+        //   text: 'Residencial',
+        //   icon: 'home',
+        //   handler: () => {
+        //     console.log('Share clicked');
+        //   },
+        // },
         {
           text: 'Cancelar',
           icon: 'close',
@@ -164,6 +164,8 @@ export class PerfilPage implements OnInit {
       ]
     });
     (await alert).present();
-  }   
+  }  
+  
+  
 
 }
