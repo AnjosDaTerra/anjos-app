@@ -1,9 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 import { Usuario } from 'src/app/Core/models/vitima/login.interface';
 import { UtilidadesService } from 'src/app/Core/services/utilidades.service';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -15,12 +16,16 @@ export class LoginPage implements OnInit {
   botaoCL: boolean = true;
   botaoCLmsg: string = 'Cadastra-se';
   titulo: string = 'Login';
-  //Tenho que ver onde vou por esse httpOptions
+  temCadastro!: boolean
+  //Tenho que ver onde vou por esse httpOptions e a chamadas http
   httpOptions = {
     headers: new HttpHeaders({'Content-Type' : 'application/json'})
   } 
-  //---------------------------------
-  cadastroForm! : FormGroup
+  readonly API = 'http://127.0.0.1:4000';
+  //--------------------------------------------
+  cadastroForm! :FormGroup
+  loginForm! :FormGroup
+
   error_messages = {
     'cpf': [
       { type: 'required',  message: '*'},
@@ -35,7 +40,7 @@ export class LoginPage implements OnInit {
       { type: 'maxlenght', message: '* você excedeu o número de caracteres'},
       { type: 'email',     message: '* por favor, digite um email válido'}
     ],
-    
+
     'password': [
       { type: 'required',  message: '*'},
       { type: 'minlength', message: 'Sua senha tem menos de 4 caracteres'},
@@ -48,18 +53,22 @@ export class LoginPage implements OnInit {
       { type: 'Mustmatch', message: 'errado'}
     ]
   }
+ //VENDO COMO FUNCIONA
+  message:string=""; //E ESSE AQUI RECEBE
 
   constructor(
-    private readonly httpClient: HttpClient, 
+    private httpClient: HttpClient, 
     private util:UtilidadesService, 
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private menuCtrl: MenuController,
+    private router: Router,
   ) { 
-   
+   this.menuCtrl.enable(false, 'main-menu') //Desativa o menu lateral.
   }
 
   ngOnInit() {
     this.cadastroForm = this.formBuilder.group({
-      cpf: ['', 
+      cpf: ['',
         Validators.compose([
         Validators.required,
         Validators.minLength(11),
@@ -80,13 +89,23 @@ export class LoginPage implements OnInit {
       confirmPassword: new FormControl('', Validators.compose([
         Validators.required
       ]))
-    }, 
+    },
     {
-      validators: this.mustMatch('password','confirmPassword')
+      validators: this.mustMatch('password','confirmPassword') //@deprecated
     }
     );
+
+    this.loginForm = this.formBuilder.group({
+      cpf: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
+
+      password: new FormControl('', Validators.compose([
+        Validators.required
+      ]))
+    })
   }
-  
+
   get cadastroFormControl() {
     return this.cadastroForm.controls;
   }
@@ -94,7 +113,7 @@ export class LoginPage implements OnInit {
   togglePasswordFieldType() {
     this.isTextFieldType = !this.isTextFieldType;
   }
-  
+
   //Metodo de comparar senhas
   mustMatch(password: string, confirmPassword: string) {
     return (fg: FormGroup) => {
@@ -112,7 +131,7 @@ export class LoginPage implements OnInit {
       }
     }
   }
-  
+
   public mudarCadastroLogin() {
     this.botaoCL = !this.botaoCL;
     if (this.botaoCL) {
@@ -129,13 +148,12 @@ export class LoginPage implements OnInit {
      let objCadastro: Usuario = {
        cpf: this.cadastroForm.value['cpf'],
        senha: this.cadastroForm.value['confirmPassword'],
-       email: this.cadastroForm.value['email']
+       email: this.cadastroForm.value['email'],
+       logado: false //verificar se vai alterar o valor no banco para `true` quando o user logar
      }
-    console.log("form",this.cadastroForm.value['cpf']);
-    console.log(objCadastro)
 
     //Faz a chamada do endpoint de cadastro
-    this.httpClient.post<Usuario|string>('http://127.0.0.1:4000/vitima/criar-login',objCadastro,this.httpOptions).subscribe((result) => {
+    this.httpClient.post<Usuario|string>(`${this.API}/vitima/criar-login`,objCadastro,this.httpOptions).subscribe((result) => {
       if(result == "200") {
         this.util.informando('Cadastro realizado com sucesso!', 'success', 'top', 5000);
       } else {
@@ -144,4 +162,29 @@ export class LoginPage implements OnInit {
     });
   }
 
+  public logar() {
+    const cpf = this.loginForm.value['cpf'];
+    const senha = this.loginForm.value['password'];
+    this.checkCadastroPessoal(cpf);
+    this.httpClient.get<string>(`${this.API}/vitima/check-login/${cpf}/${senha}`).subscribe((result) => {
+      if(result == "200") {
+        if(this.temCadastro) {
+          //vou passar os dados pra outra pagina
+         this.router.navigate([`/home/${cpf}`])
+        } else {
+          this.router.navigate(['/pessoal'], {queryParams:{cpf:`${cpf}`}})
+        }
+      } else {
+        this.util.informando('Credenciais incorretas', 'danger', 'top', 3000);
+      }      
+    })
+  }
+
+  public checkCadastroPessoal(cpf: string) {
+    this.httpClient.get<boolean>(`${this.API}/vitima/check-cadastro-pessoal?cpf=${cpf}`).subscribe(valor => {
+      console.log(`valor booleando checkCadastro `+ valor)
+      this.temCadastro = valor;
+      console.log(`depois da atribuicao`+this.temCadastro)
+    })
+  } 
 }

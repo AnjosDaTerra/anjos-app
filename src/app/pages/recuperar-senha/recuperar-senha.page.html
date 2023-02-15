@@ -1,0 +1,132 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Recuperação de senha</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-grid *ngIf="botaoNome=='Enviar'">
+ 
+  <div class="container">
+    <div>
+      <p class="texto">Por favor, insira no campo abaixo o email vinculado ao seu cpf</p>
+    </div>
+  </div>
+   
+  <form [formGroup]="formEmail" (ngSubmit)="enviarCodigo()">
+    <ion-row>
+
+      <ion-col>
+        <ion-item class="text-white">
+
+          <ion-label>Email:</ion-label>
+          <ion-input type="email" id="email" name="email" formControlName="email">
+         </ion-input>
+      
+        </ion-item>
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row size="12"  class="ion-text-center">
+      <ion-col>
+        <ion-button [routerLink]="['/login']">Voltar</ion-button>
+        <ion-button type="submit"  [disabled]="buttonDisabled" >{{botaoNome}}</ion-button>
+      </ion-col>
+    </ion-row>
+ 
+  </form>
+ 
+
+</ion-grid>
+
+<!--CONFIRMAR CODIGO-->
+<ion-grid *ngIf="botaoNome=='Confirmar'">
+  
+  <div class="container">
+    <div>
+      <p class="texto">Digite no campo abaixo o codigo recebido por email:</p>
+    </div>
+  </div>
+   
+  <form [formGroup]="formConfirma" (ngSubmit)="confirmarCodigo()">
+    <ion-row>
+
+      <ion-col>
+        <ion-item class="text-white">
+
+          <ion-label>Codigo:</ion-label>
+          <ion-input type="text" id="codigo" name="codigo" formControlName="codigo">
+         </ion-input>
+      
+        </ion-item>
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row size="12"  class="ion-text-center">
+      <ion-col>
+        <ion-button type="submit"  [disabled]="buttonDisabled" >{{botaoNome}}</ion-button>
+      </ion-col>
+    </ion-row>
+    
+  </form>
+</ion-grid>
+
+
+<!--TROCAR SENHA-->
+<ion-grid *ngIf="botaoNome=='Trocar senha'">
+
+  <div>
+    <p class="texto">Digite nos campos abaixo a sua nova senha:</p>
+  </div>
+
+  <!--MUDAR SENHA-->
+  <form [formGroup]="formNewPassword" (ngSubmit)="mudarSenha()">
+    <ion-row>
+      <ion-col>
+  
+      <ion-item>
+        
+        <ion-input [type]="isTextFieldType ? 'text' : 'password'" placeholder="Nova senha" formControlName="password">  <!--Fazer a verficacao de senha-->
+        </ion-input>
+        <ng-container>
+          <ion-label *ngIf="formNewPassword.get('password')?.valid"><ion-icon color="success" name="checkmark-circle-outline"></ion-icon></ion-label>
+        </ng-container>
+        
+        <!-- <button (click)="togglePasswordFieldType()"> -->
+       
+          <!-- <ion-icon [name]="isTextFieldType ? 'eye' : 'eye-off'">
+          </ion-icon> -->
+        <!-- </button> -->
+      </ion-item>
+  
+      <ion-item>
+        <ion-input [type]="isTextFieldType ? 'text' : 'password'" placeholder="Confirme sua senha" id="senha" name="senha" formControlName="confirmPassword">
+        </ion-input>
+        <ng-container *ngFor="let error of error_messages.confirmPassword">
+          <ion-label *ngIf="formNewPassword.get('confirmPassword')?.valid">
+              <ion-icon color="success" name="checkmark-circle-outline"></ion-icon>
+          </ion-label>
+        </ng-container>
+
+        <!-- <button (click)="togglePasswordFieldType()"> -->
+
+          <!-- <ion-icon [name]="isTextFieldType ? 'eye' : 'eye-off'">
+          </ion-icon> -->
+        <!-- </button> -->
+      </ion-item>
+
+      </ion-col>
+    </ion-row>
+
+    <ion-row size="12"  class="ion-text-center">
+      <ion-col>
+        <ion-button type="submit"  [disabled]="!formNewPassword.valid" >{{botaoNome}}</ion-button>
+      </ion-col>
+    </ion-row>
+    
+  </form>
+</ion-grid>
+

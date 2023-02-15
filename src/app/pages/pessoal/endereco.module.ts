@@ -4,19 +4,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { LoginPageRoutingModule } from './login-routing.module';
+import { EnderecoPageRoutingModule } from './endereco-routing.module';
 
-import { LoginPage } from './login.page';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { EnderecoPage } from './endereco.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule,
     IonicModule,
-    LoginPageRoutingModule,
+    ReactiveFormsModule,
+    EnderecoPageRoutingModule
   ],
-  declarations: [LoginPage]
+  declarations: [EnderecoPage]
 })
-export class LoginPageModule {}
+export class EnderecoPageModule {}

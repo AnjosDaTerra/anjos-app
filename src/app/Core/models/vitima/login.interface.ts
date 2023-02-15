@@ -1,5 +1,6 @@
 export interface Usuario {
   cpf : string;
   senha: string;
-  email: string;
+  email?: string;
+  logado: boolean;
 }

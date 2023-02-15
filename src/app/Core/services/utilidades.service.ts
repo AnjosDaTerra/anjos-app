@@ -26,4 +26,15 @@ export class UtilidadesService {
       (await toastei).present();
   }
 
+  //Vitor vai criar o loading. Se tiver dúvida procurar sobre LoadingController do ionic.
+  // async carregando(timer: number, msg:string) {
+  //   const load = this.loadCtrl.create({
+  //     mode: 'ios',
+  //     message: msg,
+  //     duration: timer
+  //   });
+  //   (await load).present();
+  // }
+
+
 }

@@ -4,19 +4,20 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { LoginPageRoutingModule } from './login-routing.module';
+import { SolicitacaoPageRoutingModule } from './solicitacao-routing.module';
 
-import { LoginPage } from './login.page';
+import { SolicitacaoPage } from './solicitacao.page';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule,
     IonicModule,
-    LoginPageRoutingModule,
+    SolicitacaoPageRoutingModule,
+    ReactiveFormsModule,
+    SharedModule
   ],
-  declarations: [LoginPage]
+  declarations: [SolicitacaoPage]
 })
-export class LoginPageModule {}
+export class SolicitacaoPageModule {}

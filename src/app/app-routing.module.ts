@@ -9,7 +9,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'home',
+    path: 'home/:id',
     loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule)
   },
   {
@@ -17,12 +17,12 @@ const routes: Routes = [
     loadChildren: () => import('./folder/folder.module').then(m => m.FolderPageModule)
   },
   {
-    path: 'quemsomos/:id',
+    path: 'quemsomos',
     loadChildren: () => import('./pages/quemsomos/quemsomos.module').then(m => m.QuemsomosPageModule)
   },
   {
     path: 'botao',
-    loadChildren: () => import('./botao/botao.module').then(m => m.BotaoPageModule)
+    loadChildren: () => import('./Core/botao/botao.module').then(m => m.BotaoPageModule)
   },
   {
     path: 'footer',
@@ -31,6 +31,26 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)
+  },
+  {
+    path: 'pessoal',//cadastro pessoal
+    loadChildren: () => import('./pages/pessoal/endereco.module').then(m => m.EnderecoPageModule)
+  },
+  {
+    path: 'residencial', //cadastro endereco
+    loadChildren: () => import('./pages/residencial/residencial.module').then(m => m.ResidencialPageModule)
+  },
+  {
+    path: 'solicitacao/:id',
+    loadChildren: () => import('./pages/solicitacao/solicitacao.module').then( m => m.SolicitacaoPageModule)
+  },
+  {
+    path: 'perfil/:id',
+    loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
+  {
+    path: 'recuperar-senha',
+    loadChildren: () => import('./pages/recuperar-senha/recuperar-senha.module').then( m => m.RecuperarSenhaPageModule)
   }
 
 

@@ -4,19 +4,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { LoginPageRoutingModule } from './login-routing.module';
+import { RecuperarSenhaPageRoutingModule } from './recuperar-senha-routing.module';
 
-import { LoginPage } from './login.page';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { RecuperarSenhaPage } from './recuperar-senha.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule,
     IonicModule,
-    LoginPageRoutingModule,
+    ReactiveFormsModule,
+    RecuperarSenhaPageRoutingModule
   ],
-  declarations: [LoginPage]
+  declarations: [RecuperarSenhaPage]
 })
-export class LoginPageModule {}
+export class RecuperarSenhaPageModule {}

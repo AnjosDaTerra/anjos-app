@@ -1,0 +1,123 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title class="titulo"></ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main-menu"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<div class="p">
+  <h1>Cadastro Pessoal</h1>
+  </div>
+  
+<ion-grid>
+  <form [formGroup]="form" (ngSubmit)="cadastrar()">
+    <ion-row>
+      <ion-col>
+
+        <ion-item class="text-white" size="6">         
+          <ion-label position="floating">Nome:</ion-label>
+          <ion-input placeholder="Digite o seu nome" type="text" id="nome" name="nome" formControlName="nome"></ion-input>
+        </ion-item>
+
+      </ion-col>
+      <ion-col>
+        <ion-item class="text-white" size="6">         
+          <ion-label position="floating">Sobrenome:</ion-label>
+          <ion-input placeholder="Digite seu sobrenome" type="text" id="sobrenome" name="sobrenome" formControlName="sobrenome"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item class="text-white">         
+          <ion-label position="floating">CPF:</ion-label>
+          <ion-input placeholder="000.000.001-0" type="text" id="cpf" name="cpf" readonly=“true” formControlName="cpf"></ion-input>
+        </ion-item>
+      </ion-col>
+
+      <ion-col size="">
+
+        <ion-item class="text-white">         
+          <ion-label position="floating">Idade:</ion-label>
+          <ion-input placeholder="Digite sua idade" type="number" id="idade" name="idade" formControlName="idade"></ion-input>
+        </ion-item>
+
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row>
+      <!-- <ion-col>
+
+        <ion-item class="text-white">         
+          <ion-label position="floating">Data de nascimento:</ion-label>
+          <ion-input placeholder="Ex: 00/00/0000" type="date" id="data_nasc"></ion-input>
+        </ion-item>
+
+      </ion-col> -->
+    
+    </ion-row>
+
+  
+  <ion-row>
+    <ion-col>
+    <ion-item class="text-white">         
+      <ion-label position="floating">E-mail:</ion-label>
+      <ion-input placeholder="Ex: anjosdaterra@outlook.com" type="email" id="email" name="email" readonly=“true” formControlName="email"></ion-input>
+    </ion-item>
+  </ion-col>
+  </ion-row>
+
+    <ion-row>
+
+
+      <ion-col size="6">
+        <ion-item class="text-white">         
+          <ion-label position="floating">Telefone:</ion-label>
+          <ion-input placeholder="Ex:(21)91111-2222" type="number" id="telefone" name="telefone" formControlName="telefone"></ion-input>
+        </ion-item>
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row>
+      
+        <ion-col size="6">
+          <ion-item>
+            <ion-label position="floating">Sexo</ion-label>
+            <ion-select placeholder="select" (ionChange)="pegarSexo($event)" formControlName="sexo">
+              <ion-select-option *ngFor="let o of option_sexo" [value]="o.name">
+                {{o.name}} 
+              </ion-select-option>          
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      
+      <ion-col>
+        <ion-item class="text-white"> 
+          <ion-label position="floating">Estado civil</ion-label>
+          <ion-select placeholder="select" (ionChange)="pegarEstadoCivil($event)" formControlName="estado_civil">
+            <ion-select-option *ngFor="let o of option_estadoCivil" [value]="o.name">
+              {{o.name}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>  
+        <div class="entrar">
+          <ion-button color="primary" expand="block" type="submit">         
+           Salvar
+          </ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+
+  </form>
+</ion-grid>
