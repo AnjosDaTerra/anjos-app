@@ -16,14 +16,11 @@ export class AppComponent implements OnInit  {
   }
 
   public appPages = [//como q eu vou passar o cpf para o meu perfil.
-    { title: 'Meu perfil', url: `/perfil/${this.route}`, icon: 'person' },
     { title: 'Quem somos', url: '/quemsomos', icon: 'people' },
+    { title: 'Logout', url: `/login`, icon: 'exit' }
     // { title: 'Lojas', url: '/folder/Favorites', icon: 'heart' }
   ];
 
-  teste() {
-    console.log(this.rotaStore+'123');
-  }
 }
 
 
