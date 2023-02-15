@@ -1,33 +1,53 @@
 .imagem-logo {
-  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 65%;
 }
-.imagem-logo h1{
-  text-align: center;
+.icone {
+  position: absolute;
+  right: 140px;
 }
-.titulo {
+.titulo h1 {
   text-align: center;
-  letter-spacing: -1px;
+  background-size: 100% 3px;
+  font-size: 7vw;
 }
-.first_card-{
+.first_card- {
   text-align: justify;
-  line-height: 1.5;
+  line-height: normal;
   letter-spacing: -1px; /* propriedade css que específica o comportamento do espaçamento entre os caracteres de texto*/
   width: 90%;
-  background: linear-gradient(to right, transparent, #b7d5e5
-  )
-
+  background: linear-gradient(to right, transparent, #b7d5e5);
 }
-.first_card- h1{
+.first_card- h1 {
   text-align: center;
-  letter-spacing: -1px;
-
+  text-decoration: underline;
+  font-size: 7vw;
 }
 
-.secound_card {
+.second_card {
+  text-align: justify;
+  line-height: normal;
+  letter-spacing: -1px; /* propriedade css que específica o comportamento do espaçamento entre os caracteres de texto*/
+  width: 90%;
+  background: linear-gradient(to right, transparent, #b7d5e5);
+}
+.second_card h1 {
   text-align: center;
+  text-decoration: underline;
 }
 .third_card {
+  text-align: justify;
+  line-height: normal;
+  letter-spacing: -0.80px; /* propriedade css que específica o comportamento do espaçamento entre os caracteres de texto*/
+  width: 90%;
+  background: linear-gradient(to right, transparent, #b7d5e5);
+}
+
+.third_card h1 {
   text-align: center;
+  text-decoration: underline;
 }
 .floating_button {
   position: absolute;
