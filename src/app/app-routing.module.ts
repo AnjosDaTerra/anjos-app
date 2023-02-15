@@ -17,7 +17,7 @@ const routes: Routes = [
     loadChildren: () => import('./folder/folder.module').then(m => m.FolderPageModule)
   },
   {
-    path: 'quemsomos/:id',
+    path: 'quemsomos',
     loadChildren: () => import('./pages/quemsomos/quemsomos.module').then(m => m.QuemsomosPageModule)
   },
   {
@@ -41,7 +41,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/residencial/residencial.module').then(m => m.ResidencialPageModule)
   },
   {
-    path: 'solicitacao',
+    path: 'solicitacao/:id',
     loadChildren: () => import('./pages/solicitacao/solicitacao.module').then( m => m.SolicitacaoPageModule)
   },
   {

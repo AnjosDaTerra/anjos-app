@@ -100,7 +100,7 @@ export class EnderecoPage implements OnInit {
     }
     this.httpClient.post<DadosPessoais|string>(`${this.API}/vitima/criar-dados-pessoal?cpf=${objPessoalData.cpf}`, objPessoalData,this.httpOptions).subscribe((result) => {
       if(result == '200') {
-        this.router.navigate([`/home`], {queryParams:{cpf:`${objPessoalData.cpf }`}}) 
+        this.router.navigate([`/home/${objPessoalData.cpf}`], {queryParams:{cpf:`${objPessoalData.cpf }`}}) 
       }
     })  
   }

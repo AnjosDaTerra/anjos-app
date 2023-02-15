@@ -10,9 +10,9 @@
 
   <div class="user_div">
     <div class="first_div">
-      <ion-label class="username">Yuri Conder</ion-label>
+      <ion-label class="username">{{nome}} {{sobrenome}}</ion-label>
       <br>
-      <ion-label class="username">154789854785</ion-label>
+      <ion-label class="username">{{cpf}}</ion-label>
     </div>
     <div class="user_back" [style.backgroundImage]="''"></div>
   </div>
@@ -36,7 +36,7 @@
       </ion-grid>
     </div>
     <!--ACTION SHEET-->
-    <ion-button expand="block" (click)="editarOpcoes()">EDITAR</ion-button>
+    <ion-button expand="block" (click)="editarOpcoes()">Editar</ion-button>
     <ion-button expand="block" color="danger">Sair</ion-button>
   </div>
 </ion-content>
