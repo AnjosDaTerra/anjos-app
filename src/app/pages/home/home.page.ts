@@ -6,6 +6,7 @@ import { AlertController} from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DadosPessoais } from 'src/app/Core/models/vitima/vitima-pessoal.interface';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
