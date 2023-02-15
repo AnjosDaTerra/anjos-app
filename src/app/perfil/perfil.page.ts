@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ActionSheetController, AlertController } from '@ionic/angular';
 import { DadosPessoais } from '../Core/models/vitima/vitima-pessoal.interface';
+import { UtilidadesService } from '../Core/services/utilidades.service';
 
 @Component({
   selector: 'app-perfil',
@@ -29,6 +30,7 @@ export class PerfilPage implements OnInit {
     private route: ActivatedRoute, 
     private routeId: Router,
     private httpClient: HttpClient,
+    private util:UtilidadesService
     ) { }
 
   ngOnInit() {
@@ -134,11 +136,11 @@ export class PerfilPage implements OnInit {
         {
           text: 'Cancelar',
           handler: () => {
-          console.log("Item cancelado")
+            this.util.informando('Você cancelou a atualização','danger', 'top', 2000);
           }
         },
         { 
-          text: 'Cadastrar',
+          text: 'Atualizar',
           handler: (form) => { //é como se fosse um treinador, ele trabalha como um submit().
             //vamos criar um objeto que irá formar nosso item da lista
             let item : DadosPessoais = {
@@ -153,11 +155,15 @@ export class PerfilPage implements OnInit {
             };
             console.log(item);
             try{
-              this.httpClient.post<DadosPessoais|string>(`${this.API}/vitima/criar-dados-pessoal?cpf=${item.cpf}`, item, this.httpOptions).subscribe()
-            
+              this.httpClient.post<DadosPessoais|string>(`${this.API}/vitima/criar-dados-pessoal?cpf=${item.cpf}`, item, this.httpOptions).subscribe(resultado => {
+                if (resultado == '200') {                                       
+                  this.util.informando('Os seus dados foram atualizados com sucesso !', 'success', 'top', 3000);          
+                }
+              })            
             }catch(err){
               console.log(err)
-            } finally {        
+            } finally { 
+              setTimeout(this.refresh, 1500)       
             }           
           }           
         }           
@@ -165,7 +171,9 @@ export class PerfilPage implements OnInit {
     });
     (await alert).present();
   }  
-  
+  refresh(){
+    location.reload()
+  }
   
 
 }

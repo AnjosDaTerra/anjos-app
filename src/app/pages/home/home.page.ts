@@ -4,6 +4,7 @@ import { Usuario } from 'src/app/Core/models/vitima/login.interface';
 import { AlertController} from '@ionic/angular';
 
 import { ActivatedRoute, Router } from '@angular/router';
+import { DadosPessoais } from 'src/app/Core/models/vitima/vitima-pessoal.interface';
 
 @Component({
   selector: 'app-home',
@@ -11,12 +12,16 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-  httpOptions = {
+   //Tenho que ver onde vou por esse httpOptions e a chamadas http
+   httpOptions = {
     headers: new HttpHeaders({'Content-Type' : 'application/json'})
-  };
-  nome!: Usuario;
+  } 
+  readonly API = 'http://127.0.0.1:4000';
+  //--------------------------------------------
+
+  nome!: string;
   cpf!: string;
-  
+  objeto! : DadosPessoais  
   updateUserInfo: any
 
   
@@ -28,7 +33,7 @@ export class HomePage implements OnInit {
    
   ngOnInit() {
     this.routeId = this.route.snapshot.params['id'];
-    console.log(this.routeId)
+    this.pegarInformacao();
     //esse reloadOnce serve pra não bugar o side menu logo depois do login.
     this.reloadOnce()
   }
@@ -49,6 +54,15 @@ export class HomePage implements OnInit {
           localStorage.removeItem('reload');  
       }
     }
+  }
+
+  //Pegar os dados do banco.
+  pegarInformacao() {
+    this.httpClient.get<DadosPessoais>(`${this.API}/vitima/pegar-dados-pessoal?cpf=${this.routeId}`).subscribe((resultado) => {
+      this.objeto = resultado;
+      this.nome = this.objeto.nome;
+      this.cpf = this.objeto.cpf;
+    })
   }
 
   // public async sayHello() : Promise<Usuario> {

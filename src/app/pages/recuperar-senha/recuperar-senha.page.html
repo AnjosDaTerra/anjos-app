@@ -31,12 +31,13 @@
 
     <ion-row size="12"  class="ion-text-center">
       <ion-col>
+        <ion-button [routerLink]="['/login']">Voltar</ion-button>
         <ion-button type="submit"  [disabled]="buttonDisabled" >{{botaoNome}}</ion-button>
       </ion-col>
     </ion-row>
-    
+ 
   </form>
-  <button [routerLink]="['/login']">Voltar</button>
+ 
 
 </ion-grid>
 
