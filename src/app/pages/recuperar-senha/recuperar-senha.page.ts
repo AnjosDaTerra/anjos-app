@@ -29,7 +29,7 @@ export class RecuperarSenhaPage implements OnInit {
 httpOptions = {
   headers: new HttpHeaders({'Content-Type' : 'application/json'})
 } 
-readonly API = 'http://127.0.0.1:4000';
+readonly API = 'https://anjos-server.herokuapp.com';
 //--------------------------------------------
   formEmail! : FormGroup;
   formConfirma! : FormGroup;
@@ -152,7 +152,7 @@ readonly API = 'http://127.0.0.1:4000';
           console.log(generatedNumber)
           
           //criar um endpoint pra enviar o numero aleatorio
-          this.httpClient.post<MsgRequest>(`http://127.0.0.1:4000/email/enviar`, objEmail, this.httpOptions).subscribe()
+          this.httpClient.post<MsgRequest>(`${this.API}/email/enviar`, objEmail, this.httpOptions).subscribe()
           this.util.informando('O código de recuperação foi enviado para o seu email', 'success', 'top', 3000);
           this.botaoNome = "Confirmar"      
         } else {

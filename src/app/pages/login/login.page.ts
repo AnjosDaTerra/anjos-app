@@ -21,7 +21,7 @@ export class LoginPage implements OnInit {
   httpOptions = {
     headers: new HttpHeaders({'Content-Type' : 'application/json'})
   } 
-  readonly API = 'http://127.0.0.1:4000';
+  readonly API = 'https://anjos-server.herokuapp.com';
   //--------------------------------------------
   cadastroForm! :FormGroup
   loginForm! :FormGroup
